@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.28)  10 NOV 2025 17:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.28)  17 NOV 2025 18:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -775,7 +775,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[4] (./Files/introduction.tex)
+[4] (./Files/introduction.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -786,7 +786,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5
 
-] (./Files/overview.tex)
+])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -795,9 +795,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[6
-
-] (./Files/requirements.tex)
+[6] (./Files/overview.tex)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -808,7 +806,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7
 
-] (./Files/alloy.tex)
+] (./Files/requirements.tex)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -819,7 +817,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [8
 
-] (./Files/effort.tex)
+] (./Files/alloy.tex)
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -830,6 +828,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [9
 
+] (./Files/effort.tex)
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[10
+
 ]
 No file main.bbl.
 (./main.aux)
@@ -838,21 +847,21 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-10-24>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8BF66E273832E7900AFCCE66C503D5AD;1452.
+(rerunfilecheck)             Checksum: 9F76F5E01BAD4D16AE9C729B2B2685D4;2330.
  ) 
 Here is how much of TeX's memory you used:
- 25151 strings out of 467747
- 464031 string characters out of 5431120
- 849804 words of memory out of 5000000
- 53353 multiletter control sequences out of 15000+600000
+ 25168 strings out of 467747
+ 464322 string characters out of 5431120
+ 854807 words of memory out of 5000000
+ 53363 multiletter control sequences out of 15000+600000
  655370 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,20n,93p,477b,667s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (9 pages, 47200 bytes).
+Output written on main.pdf (10 pages, 52728 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 107 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 161 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 154 words of extra memory for PDF output out of 10000 (max. 10000000)
 
