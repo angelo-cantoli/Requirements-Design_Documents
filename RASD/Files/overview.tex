@@ -90,3 +90,21 @@ option to make all possible paths visible. The user can select a path by clickin
 then give the user the option to view the statistics of the path, select the path as the main highlighted path 
 (if it isn't already), and to open the path in a third party navigation app (e.g. Google Maps). The user will 
 also have the option to view all paths in a list, sorted by score.
+
+\subsection{User Characteristics}
+\subsection{Assumptions, Dependencies and Constraints}
+\subsubsection{Domain Assumptions}
+\begin{itemize}
+    \item D1: Each registered user has a valid email address
+    \item D2: Users have a mobile device capable of running the BBP application
+    \item D3: Users' mobile devices have GPS capabilities, with typical smartphone precision (5-10 meters)
+    \item D4: GPS signals are generally available with sufficient precision while cycling
+    \item D5: Registered users who use the automated recording functionality have accelerometer and gyroscope sensors in their mobile devices
+    \item D6: Users' have internet access when using online features (e.g. path publication and visualization, weather data retrieval)
+    \item D7: Users bike on roads intended for cycling (where bike tracks exist, or cars are rare and speed limits are compatible with biking)
+    \item D8: Users who manually record trips bike on named roads which are marked on maps
+    \item D9: A sufficient number of registered users are willing to publish their bike routes
+    \item D10: Obstacles on bike paths cause a significant enough shift in movement to be detectable through the mobile device's sensors
+    \item D11: Users can assess road surface conditions and categorize them in the predefined status values
+    \item D12: Bike paths can be reconstructed reasonably accurately based on the names of the streets and the order in which they were traversed
+\end{itemize}
