@@ -5,51 +5,70 @@ The application is intended for smartphone, where it can make use of GPS and sen
 
 \subsubsection{Goals}
 \begin{itemize}
-    \item G1: Users can record their bike trips through an automated process
-    \item G2: Users can manually insert and record data about their bike trips
-    \item G3: Users can view statistics and status of recorded bike trips
-    \item G4: Users can access, if available, metereological data about the bike trip
-    \item G5: Users can view potential hazards identified on the bike path
-    \item G6: Users can publish recorded bike trips
-    \item G7: Users can access all published bike trips
-    \item G8: Users can view, on a map, all published bike paths between two points, ordered based on their score
+    \item G1: Cyclists maintain accurate and comprehensive records of their bike trips
+    \begin{itemize}
+        \item G1.1: Bike trip data is automatically tracked while cycling
+        \item G1.2: Recording bike trips remains possible without automatic tracking
+        \item G1.3: The records of cyclists' bike trips are persistent and always accessible
+        \item G1.4: Cyclists' performance statistics are observable throughout their trip history
+        \item G1.5: Recorded bike trips include the condition of the roads on the bike path
+        \item G1.6: Hazards and obstacles on the bike path are identified and recorded
+        \item G1.7: Recorded bike trips include meteorological conditions when available
+    \end{itemize}
+    \item G2: Cyclists make informed route selections
+    \begin{itemize}
+        \item G2.1: All known paths that cover a route are observable
+        \item G2.2: The most suitable paths between two locations are distinguishable
+        \item G2.3: Path suitability is objectively evaluable based on road condition and route effectiveness
+
+    \end{itemize}
+    \item G3: A community knowledge base of bike path information is maintained by cyclists
+    \begin{itemize}
+        \item G3.1: Cyclists contribute bike path information by sharing their recorded trips
+        \item G3.2: Published bike path information is accessible to all users regardless of registration
+    \end{itemize}
 \end{itemize}
 
 \subsection{Scope}
 
 \subsubsection{World Phenomena}
 \begin{itemize}
-    \item WP1: User goes on a bike trip
-    \item WP2: User wants to register his bike trips
-    \item WP3: User encounters obstacles
-    \item WP4: User wants to find the best bike paths
-    \item WP5: User wants to access information about bike paths
-    \item WP6: Meteorological conditions change along the bike path
-    \item WP7: User wants to share information about their bike paths
+    \item WP1: User goes cycling along roads
+    \item WP2: Roads contain potholes or other obstacles
+    \item WP3: Road conditions vary over time
+    \item WP4: Meteorological conditions change over time
+    \item WP5: User needs to find routes between two locations
+    \item WP6: User decides to record a bike trip
+    \item WP7: Cyclists decide to share information with a community of other cyclists
 \end{itemize}
 
 \subsubsection{Shared Phenomena}
 \begin{itemize}
     \item SP1: User creates an account
-    \item SP2: User logs in the account
-    \item SP3: User records a bike trip
-    \item SP4: Application stores inserted bike trip
-    \item SP5: Application calculates and provides statistics about bike trips
-    \item SP6: App retrieves meteorological informations along the path from an external service
-    \item SP7: App adds meteorological informations to bike path data
-    \item SP8: User insert status and name of the streets in the bike path
-    \item SP9: User insert presence of obstacles along the path
-    \item SP10: User let BBP acquire data from his mobile phone automatically
-    \item SP11: BBP guess if the user is biking given their speed
-    \item SP12: BBP collects GPS information from users phone to reconstruct the followed path
-    \item SP13: BBP acquires data from users phone sensors to identify potential problems on the path
-    \item SP14: User confirms information acquired automatically from BBP
-    \item SP15: User corrects information acquired automatically from BBP
-    \item SP16: User publishes collected information on BBP
-    \item SP17: Any user asks BBP to visualize bike path on a map, specifying origin and destination
-    \item SP18: BBP provides all shared information about selected bike paths to any user
-    \item SP19: BBP computes score of a path based on status and effectiveness on reaching the destination  
-    \item SP20: BBP visualizes all paths between the two point inserted by user, ordered based on the computed score
+    \item SP2: User logs into their account
+    \item SP3: User logs out of their account
+    \item SP4: User starts trip recording
+    \item SP5: User stops trip recording
+    \item SP6: System confirms trip has been saved
+    \item SP7: System displays statistics regarding saved trips
+    \item SP8: System retrieves meteorological information from an external service
+    \item SP9: System displays trip information enriched with weather data
+    \item SP10: User manually inserts street names and status of a bike path
+    \item SP11: User manually inserts the presence of an obstacle on the path
+    \item SP12: User enables the system to automatically acquire data from their mobile device
+    \item SP13: System detects if the user is biking based on speed data
+    \item SP14: Mobile device's GPS provides location coordinates for path reconstruction
+    \item SP15: Mobile device's accelerometer provides motion data
+    \item SP16: Mobile device's gyroscope provides orientation data
+    \item SP17: User confirms automatically detected obstacles
+    \item SP18: User corrects automatically detected obstacles
+    \item SP19: User publishes bike trip information
+    \item SP20: User specifies an origin and destination for path visualization
+    \item SP21: System displays relevant path information
+    \item SP22: System displays paths between two locations, ranked based on score
+    \item SP23: User views their recorded trips
+    \item SP24: User edits one of their recorded trips
+    \item SP25: User deletes one of their recorded trips
 \end{itemize}
 
 \subsection{Definitions, Acronyms, Abbreviations}
