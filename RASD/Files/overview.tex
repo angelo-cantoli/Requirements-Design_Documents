@@ -1,0 +1,92 @@
+\subsection{Product Perspective}
+\subsection{Product Functions}
+
+\textbf{Sign up \& Login} \\
+Users can access the app in two ways: 
+\begin{itemize}
+    \item Unregistered access: accessing the app without registering an account gives a user access to the 
+    path visualization interface. By inserting a start and end location, the application will show on a map 
+    all the paths between the two points, sorted based on their score (as described in detail in the 'Path 
+    Visualization' product function).
+    \item Registered access: the app also gives users the option to register a personal account. It will ask 
+    the user to insert a username, e-mail and a password, along with some optional personal data (name, date 
+    of birth, profile picture). If the username or email is already taken by another user, the system will 
+    notify that a different username must be chosen. A verification email will be sent to the provided address 
+    with an OTP, which will be requested by the system before the registration can be submitted. Once the 
+    registration is complete, the user can login to their account, which gives them the ability to record, and 
+    eventually publish, their bike trips, in addition to the features of the unregistered access. The user can 
+    log out from their account at any time. \\
+\end{itemize}
+\textbf{Recording of Trips} \\
+The main functionality of BBP is to allow registered users to record and save their bike trips.
+There are two ways to record a trip in BBP:
+\begin{itemize}
+    \item Manual recording: if the user wants to record their trip manually, they must insert all relevant 
+    information into the BBP application: the start and end locations of their trip, the names of the streets 
+    present in the path (in the order in which they were traversed), their status (selected from predefined 
+    status values: optimal, medium, sufficient, requires maintenance), and the start and end times of the trip. 
+    Users can also manually mark the locations of obstacles encountered along the path. The system will 
+    reconstruct the path based on the streets provided and their order.
+    \item Automatic recording: if the user wants to record their trip automatically, they must begin the 
+    automated recording before the start of their trip, and allow BBP to acquire data from their mobile device. 
+    BBP will then start tracking the GPS position of the user's mobile device to determine what path they are 
+    taking; the tracking will begin once the speed of the mobile device is estimated to be elevated enough to 
+    assume that they have started biking (e.g. 15 km/h), and will not end until the users manually halts the 
+    recording. BBP will simultaneously access some of the mobile device's sensors, such as the gyroscope or 
+    the accelerometer, so that if a notable movement is registered (due to the presence of some obstacle on 
+    the road, such as a pothole) an obstacle marker is added to that point in the path. The system will also 
+    determine the status of the road based on the number of obstacles and sensor data patterns. Once the trip 
+    has ended the user must stop the recording, at which point BBP will save the trip.
+\end{itemize}
+The recorded trips are saved in a database accessible only to the user; trips can be published at any time so 
+that other users may visualize them, however if the trip data was recorded automatically BBP will first ask 
+the user to verify that the collected information is accurate, and if it is not to manually correct it by 
+removing incorrect obstacle markers and adjusting the status of the roads, before publishing the trip. \\
+\newline
+\noindent
+\textbf{Trip Statistics Generation} \\
+Once a user has recorded a trip, the system will automatically generate some statistics about the trip. The 
+statistics include:
+\begin{itemize}
+    \item total distance covered
+    \item average speed
+    \item time taken to complete the trip
+    \item total elevation difference between start and end points
+    \item effective elevation traversed
+    \item average slope of the path 
+\end{itemize}
+These statistics are calculated based on the recorded path data and the inserted start/end times. The system 
+will also query an external service to obtain meteorological data relative to the path at that time: if it is 
+available, it will be added to the path statistics. The computed statistics are stored with the corresponding 
+path in the database; the users have the option to access them when visualizing a path.
+Additionally, the system will compute aggregate statistics across all the trips the user has recorded (e.g. 
+average time taken to complete trips, average elevation difference of trips, etc.) \\
+\newline
+\textbf{Trip History Management} \\
+Users have the option to view all their past recorded trips. The trips are presented in a list format in 
+chronological order, with the date of recording, the name and the start and end locations immediately visible. 
+By selecting a specific trip, the user can view the computed statistics for that trip, and a map view of the 
+path: there is an option to open the path in a third party navigation app (e.g. Google Maps), so that the user 
+can navigate the same route again if they desire. 
+The user has the option to edit or delete the trips at any time, and can also choose to publish the trip: if 
+the data for the trip was automatically generated and the user has not yet reviewed it,  the system will 
+prompt the user to verify and correct the information before publishing. If a trip that has already been 
+published is deleted or modified, the system will propagate the action to the published trip (e.g. if a user 
+deletes a published trip from their personal trip history, the trip will no longer be available to other users); 
+the user also has the option to make a published trip private again at any time, immediately removing it from 
+public availability. \\
+\newline
+\textbf{Path Visualization} \\
+Users, both registered and unregistered, can visualize published bike trips on a map. The application will 
+prompt the user to insert a start and end location: once inserted, the system will search for all paths that 
+connect those two points. The system then computes a score for each of the paths: the score is based on the 
+status of the roads in the path, the time it would take for the user to reach the destination by following 
+the path (calculated by considering the total length of the path and the elevation difference), the amount of 
+obstacles along the path and the difficulty of the path (calculated by considering the average slope of the 
+path). The system then shows the user all the identified paths on a map: the path with the highest score will 
+be highlighted, while the others will be shown with lower opacity, and the scores will all be visible. Only 
+the 5 paths with the highest score will be immediately visible, to avoid cluttering; the user will have the 
+option to make all possible paths visible. The user can select a path by clicking on it: the application will 
+then give the user the option to view the statistics of the path, select the path as the main highlighted path 
+(if it isn't already), and to open the path in a third party navigation app (e.g. Google Maps). The user will 
+also have the option to view all paths in a list, sorted by score.
