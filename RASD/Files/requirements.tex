@@ -2,6 +2,87 @@
 
 \subsection{Functional Requirements}
 
+\subsubsection{Requirements}
+
+ACCOUNT REGISTRATION AND MANAGEMENT
+\begin{itemize} 
+   \item R1: System accepts account registration data
+   \item R2: System rejects account registrations with duplicate emails or usernames
+   \item R3: System sends a verification email with an OTP to the email address provided during registration
+   \item R4: System must verify OTP code before confirming registration
+   \item R5: System allows users to login to their account by authenticating via email (or username) and password
+   \item R6: System allows users to logout of their account
+   \item R7: System allows users to modify their account information (username and personal data)
+   \item R8: System allows users to modify/recover their password via email verification
+   \item R9: System allows users to delete their account, with all the associated data
+\end{itemize}
+
+AUTOMATED TRIP RECORDING
+\begin{itemize}
+   \item R10: System allows users to start automated trip recording
+   \item R11: System requests necessary sensor and GPS permissions when automated recording is started
+   \item R12: System begins automated path and sensor tracking, after recording initiation, only when user has started biking
+   \item R13: System algorithmically detects if a user has started biking from speed data
+   \item R14: System collects GPS coordinates during automated trip recording
+   \item R15: System reconstructs traveled path from collected GPS coordinates
+   \item R16: System collects data from mobile device’s accelerometer and gyroscope during automated trip recording
+   \item R17: System algorithmically interprets collected sensor data to detect potential obstacles along the path
+   \item R18: System allows users to manually stop automated trip recording
+\end{itemize}
+
+MANUAL TRIP RECORDING
+\begin{itemize}
+   \item R19: System allows users to manually record trips by inserting starting and ending locations, names of roads in traversal order, start and end times
+   \item R20: System allows users to specify road status (optimal, medium, sufficient, requires maintenance) during manual recording
+   \item R21: System allows users to specify obstacle locations during manual recording
+   \item R22: System persistently stores recorded trips
+   \item R23: System ensures only author of recorded trips can access unpublished trip records
+\end{itemize}
+
+STATISTICS CALCULATION
+\begin{itemize}
+   \item R24: System automatically calculates statistics for each recorded trip (distance, average speed, duration, elevation, average slope)
+   \item R25: System calculates statistics immediately after trip is saved
+   \item R26: System calculates aggregate statistics across all of user’s recorded trips
+   \item R27: System recomputes aggregate statistics upon modification of user’s trip record (add/delete/edit trip)
+   \item R28: System persistently stores computed statistics with corresponding trip data
+   \item R29: System infers road status from detected obstacle density and movement pattern analysis when trip data is recorded automatically
+   \item R30: System queries an external meteorological service for weather data to enrich trip data after completion
+   \item R31: System stores a notice in trip data when weather data is unavailable
+\end{itemize}
+
+RECORDED TRIP MANAGEMENT
+\begin{itemize}
+   \item R32: System displays a list of user’s recorded trips showing name, date, start and end locations
+   \item R33: System allows users to view detailed trip data for any recorded trip, including route map, statistics and weather data
+   \item R34: System allows users to manually edit trip data for any of their recorded trips
+   \item R35: System allows users to delete any of their recorded trips
+   \item R36: System propagates modifications and deletions of trips to their published versions, if present
+   \item R37: System allows users to make published trips private again
+\end{itemize}
+
+TRIP PUBLICATION
+\begin{itemize}
+   \item R38: System allows registered users to publish their recorded trips, making them publicly available
+   \item R39: System requires the user to correct and confirm data before publishing, if it was acquired automatically
+   \item R40: System allows users to add/remove obstacle markers during data correction
+   \item R41: System allows users to modify road status during data correction
+\end{itemize}
+
+PUBLISHED PATH VIEWING
+\begin{itemize}
+   \item R42: System allows all users to view published bike paths between specified start and end points
+   \item R43: System identifies all published bike paths that connect specified start and end points
+   \item R44: System notifies user when no published paths exist between the specified points
+   \item R45: System calculates a score for each identified bike path based on road status, route effectiveness (distance and directness in reaching destination), amount of obstacles, path difficulty (slope)
+   \item R46: System displays all identified paths on a map, with the highest scoring path highlighted and the others with reduced opacity
+   \item R47: System displays score values for each path
+   \item R48: System initially displays a limited amount of the identified paths, providing the option to view all paths
+   \item R49: System allows users to select a displayed path
+   \item R50: System allows users to view additional information about selected path (status, obstacles)
+   \item R51: System allows users to export selected path to compatible third-party navigation applications
+\end{itemize}
+
 \subsubsection{Mapping on requirements}
 
 \subsubsection{Use case diagrams}
