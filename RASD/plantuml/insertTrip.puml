@@ -1,0 +1,52 @@
+@startuml UC3_ManualAdd
+title UC3 - User manually adds bike trip
+actor "Registered User" as User
+participant "BBP System" as System
+participant "Weather Service" as Weather
+
+autonumber
+' Entry: User is on "New trip" page
+
+User -> System: Clicks "Insert a bike trip" button
+activate System
+System -> User: Asks to insert a name for the trip
+deactivate System
+
+User -> System: Inserts name of the trip
+activate System
+System -> System: Validates inserted name
+
+alt Name Valid
+    System -> User: Asks for traveled roads
+    User -> System: Inserts traveled roads
+    System -> System: Calculates complete traveled route
+    
+    alt Route Calculation Successful
+        System -> User: Returns calculated route
+        User -> System: Confirms calculated route
+        
+        ' Nuovo passaggio Meteo
+        System -> Weather: Request weather data (Date/Location)
+        activate Weather
+        Weather --> System: Return meteorological info
+        deactivate Weather
+        System -> System: Adds meteorological info to trip
+
+        User -> System: Inserts optional information (e.g. obstacles)
+        System -> System: Calculates status based on info
+        System -> User: Shows status
+        User -> System: Clicks "Save trip"
+        
+        System -> System: Saves trip
+        System -> User: Informs user of outcome
+        note right: Exit Condition: Inserted trip is saved
+    else Exception: BBP can't calculate route
+        System --> User: Error: Cannot calculate route from inserted roads
+    end
+
+else Exception: User already saved a route with same name
+    System --> User: Error: Name already exists
+end
+
+deactivate System
+@enduml

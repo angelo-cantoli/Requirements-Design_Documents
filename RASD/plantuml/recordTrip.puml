@@ -1,0 +1,63 @@
+@startuml UC4_AutoRecord_Updated
+title UC4 - User automatically records bike trip
+actor "Registered User" as User
+participant "BBP System" as System
+participant "Phone Sensors/GPS" as Sensors
+participant "Weather Service" as Weather
+
+autonumber
+' Entry: User is on "New trip" page
+
+User -> System: Clicks start automatic recording
+activate System
+
+alt Sensor Permissions Granted
+    System -> Sensors: Start taking data (GPS)
+    
+    loop While Recording
+        Sensors -> System: Stream Velocity/GPS Data
+        System -> System: Recognize cycling (velocity > threshold)
+        System -> System: Trace position & Detect obstacles
+        
+        alt Exception: GPS Signal Lost
+             System -> User: Warning: GPS Signal Lost
+        end
+    end
+
+    System -> System: Recognize user stopped cycling
+    User -> System: User finishes automatic recording
+    
+    System -> User: Asks to confirm or correct recorded data
+    User -> System: Optionally corrects data and clicks confirm
+    
+    ' Nuovo passaggio Meteo
+    System -> Weather: Request weather data (Date/Location)
+    activate Weather
+    Weather --> System: Return meteorological info
+    deactivate Weather
+    System -> System: Adds meteorological info to trip
+
+    System -> System: Calculates status based on data
+    System -> User: Shows status
+    
+    User -> System: Inserts name and clicks "Save trip"
+
+    alt User confirms save
+        alt Name Unique
+            System -> System: Saves trip
+            System -> User: Informs user of outcome
+            note right: Exit Condition: Recorded trip is saved
+        else Exception: Duplicate Name
+             System --> User: Error: Name already exists
+        end
+    else Exception: User discards recorded trip
+        User -> System: Discards trip
+        System -> System: Deletes temp data
+    end
+
+else Exception: Sensor permissions negated
+    System --> User: Error: Permissions denied
+end
+
+deactivate System
+@enduml

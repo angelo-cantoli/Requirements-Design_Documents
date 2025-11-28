@@ -6,6 +6,14 @@
 
 \subsubsection{Use case diagrams}
 
+\subsubsection*{  High level use case diagram}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png}
+    \caption{High level Use Case Diagram}
+\end{figure}
+
 \subsubsection{Use cases}
 
 \subsubsection*{  UC1. Unregistered user signs up}
@@ -28,6 +36,7 @@
    \textbf{Exit conditions} & An account is created \\ \hline
    \textbf{Exceptions} & Username already taken \newline Password not valid \newline Connection error while registering \newline OTP not valid \\ \hline
    \end{tabularx}
+   \caption{Use Case UC1: Unregistered user signs up}
 \end{table}
 
 \begin{figure}[H]
@@ -53,6 +62,7 @@
    \textbf{Exit conditions} & User logs BBP system \\ \hline
    \textbf{Exceptions} & Inserted username not existent \newline Wrong inserted password for specified username \newline Connection error while logging in \\ \hline
    \end{tabularx}
+   \caption{Use Case UC2: User logs in the account}
 \end{table}
 
 \begin{figure}[H]
@@ -76,14 +86,16 @@
    5. User inserts traveled roads \newline
    6. BBP calculate and returns the complete traveled route \newline
    7. User confirms calculated route \newline
-   8. User inserted optional information, i.e obstacles \newline
-   9. BBP calculates status based on inserted informations and shows to user \newline
-   10. User clicks "Save trip" button \newline
-   11. BBP saves trip, and informs user of outcome
+   8. BBP adds meteorological informations based on date and location of the trip \newline
+   9. User inserts optional information, i.e obstacles \newline
+   10. BBP calculates status based on inserted informations and shows to user \newline
+   11. User clicks "Save trip" button \newline
+   12. BBP saves trip, and informs user of outcome
    \\ \hline
    \textbf{Exit conditions} & Inserted trip is saved \\ \hline
    \textbf{Exceptions} & BBP can't calculate a route based on inserted roads \newline User already saved a route with the same name \\ \hline
    \end{tabularx}
+   \caption{Use Case UC3: User manually adds bike trip}
 \end{table}
 
 \begin{figure}[H]
@@ -108,13 +120,15 @@
    6. User finished automatic recording \newline
    7. BBP asks user to confirm or correct recorded data \newline
    8. User optionally corrects data and click confirm \newline
-   9. BBP calculate status based on recorded and inserted data and shows to user \newline
-   10. User insert a name for the trip and clicks "Save trip" button \newline
-   11. BBP saves trip, and informs user of outcome
+   9. BBP adds meteorological informations based on date and location of the trip \newline
+   10. BBP calculate status based on recorded and inserted data and shows to user \newline
+   11. User insert a name for the trip and clicks "Save trip" button \newline
+   12. BBP saves trip, and informs user of outcome
    \\ \hline
    \textbf{Exit conditions} & Recorded trip is saved \\ \hline
    \textbf{Exceptions} & GPS signal lost \newline Sensor permissions negated \newline User already saved a route with the same name \newline User discards recorded trip \\ \hline
    \end{tabularx}
+   \caption{Use Case UC4: User automatically records bike trip}
 \end{table}
 
 \begin{figure}[H]
@@ -140,6 +154,7 @@
    \textbf{Exit conditions} & User closes "Bike trip history" section \\ \hline
    \textbf{Exceptions} & User does not have any saved trips \\ \hline
    \end{tabular}
+   \caption{Use Case UC5: User views his bike trip history}
 \end{table}
 
 \begin{figure}[H]
@@ -166,6 +181,7 @@
    \textbf{Exit conditions} & User closes "Trips Statistics" section \\ \hline
    \textbf{Exceptions} & User does not have any trip to calculate statistics on \\ \hline
    \end{tabular}
+   \caption{Use Case UC6: User views his bike trip statistics}
 \end{table}
 
 \begin{figure}[H]
@@ -192,6 +208,7 @@
    \textbf{Exit conditions} & User's trip is published and visible by all users \\ \hline
    \textbf{Exceptions} & Connection error while publishing \\ \hline
    \end{tabular}
+   \caption{Use Case UC7: User publishes recorded trip}
 \end{table}
 
 \begin{figure}[H]
@@ -222,6 +239,7 @@
    \textbf{Exit conditions} & Trip data is modified \\ \hline
    \textbf{Exceptions} & Inserted data is not valid \newline Connection error while propagating changes of public trip\\ \hline
    \end{tabular}
+   \caption{Use Case UC8: User modifies one of his saved trips}
 \end{table}
 
 \begin{figure}[H]
@@ -246,6 +264,7 @@
    \textbf{Exit conditions} & Paths are visualized \\ \hline
    \textbf{Exceptions} & Mapping service unavailable \newline Connection error while retrieving paths \newline No route found between the selected points \\ \hline
    \end{tabular}
+   \caption{Use Case UC9: User views possible bike routes on map}
 \end{table}
 
 \begin{figure}[H]
@@ -269,6 +288,7 @@
    \textbf{Exit conditions} & Additionals informations of a trip are visualized \\ \hline
    \textbf{Exceptions} \\ \hline
    \end{tabular}
+   \caption{Use Case UC10: User views additional information about selected path on map}
 \end{table}
 
 \begin{figure}[H]
@@ -292,6 +312,7 @@
    \textbf{Exit conditions} & Additionals informations of a trip are visualized \\ \hline
    \textbf{Exceptions} & hird-party mapping service not available\\ \hline
    \end{tabular}
+   \caption{Use Case UC11: User start navigation on selected bike path}
 \end{table}
 
 \begin{figure}[H]
@@ -319,6 +340,7 @@
    \textbf{Exit conditions} & User personal data are modified \\ \hline
    \textbf{Exceptions} & New username already taken \newline New password not valid \newline Connection error while modifying profile data \\ \hline
    \end{tabular}
+   \caption{Use Case UC12: User modifies profile data}
 \end{table}
 
 \begin{figure}[H]
@@ -344,6 +366,7 @@
    \textbf{Exit conditions} & User is disconnected from the account \\ \hline
    \textbf{Exceptions} \\ \hline
    \end{tabular}
+   \caption{Use Case UC13: User logs out the account}
 \end{table}
 
 \begin{figure}[H]
@@ -371,6 +394,7 @@
    \textbf{Exit conditions} & User is disconnected from the account and account is deleted \\ \hline
    \textbf{Exceptions} & Connection error while deleting account \\ \hline
    \end{tabular}
+   \caption{Use Case UC14: User deletes the account}
 \end{table}
 
 \begin{figure}[H]
@@ -403,6 +427,7 @@
    \textbf{Exit conditions} & Password is successfully reset \\ \hline
    \textbf{Exceptions} & Connection error while resetting password \newline Invalid OTP \newline New password not valid \\ \hline
    \end{tabular}
+   \caption{Use Case UC15: User recovers password of the account}
 \end{table}
 
 \begin{figure}[H]

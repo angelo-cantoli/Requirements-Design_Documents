@@ -1,0 +1,75 @@
+@startuml BBP_Complete_System_Final
+left to right direction
+skinparam packageStyle rectangle
+
+' --- DEFINIZIONE ATTORI UMANI (Omini) ---
+actor "User (Guest)" as User
+actor "Unregistered User" as Unreg
+actor "Registered User" as Reg
+
+' --- DEFINIZIONE SISTEMI ESTERNI (Rettangoli) ---
+rectangle "GPS & Sensors" <<System>> as Sensors
+rectangle "Weather Service" <<External Service>> as Weather
+rectangle "External Mapping Service" <<External Service>> as Maps
+
+' EREDITARIETÀ
+' Sia Unregistered che Registered sono "User"
+Unreg --|> User
+Reg --|> User
+
+' --- SISTEMA BBP ---
+rectangle "Best Bike Paths (BBP) System" {
+
+    ' -- Funzionalità COMUNI (User Base) --
+    usecase "UC9. View possible bike routes" as UC9
+    usecase "UC10. View path details" as UC10
+    usecase "UC11. Start navigation" as UC11
+    
+    ' -- Funzionalità UNREGISTERED (Accesso/Registrazione) --
+    usecase "UC1. Sign up" as UC1
+    usecase "UC2. Log in" as UC2
+    usecase "UC15. Recover password" as UC15
+
+    ' -- Funzionalità REGISTERED (Gestione Viaggi e Profilo) --
+    usecase "UC3. Manually add bike trip" as UC3
+    usecase "UC4. Automatically record bike trip" as UC4
+    usecase "UC5. View trip history" as UC5
+    usecase "UC6. View trip statistics" as UC6
+    usecase "UC7. Publish recorded trip" as UC7
+    usecase "UC8. Modify saved trip" as UC8
+    usecase "UC12. Modify profile data" as UC12
+    usecase "UC13. Log out" as UC13
+    usecase "UC14. Delete account" as UC14
+
+}
+
+' --- RELAZIONI ATTORI - USE CASES ---
+
+' User Generico (Funzioni Base)
+User --> UC9
+User --> UC10
+User --> UC11
+
+' Unregistered User (Funzioni di ingresso)
+Unreg --> UC1
+Unreg --> UC2
+Unreg --> UC15
+
+' Registered User (Funzioni Avanzate)
+Reg --> UC3
+Reg --> UC4
+Reg --> UC5
+Reg --> UC6
+Reg --> UC7
+Reg --> UC8
+Reg --> UC12
+Reg --> UC13
+Reg --> UC14
+
+' --- RELAZIONI CON SISTEMI ESTERNI ---
+' Nota: Le frecce tratteggiate (..>) con <<include>> o <<use>> sono standard per dipendenze di sistema
+UC4 ..> Sensors : <<include>>
+UC6 ..> Weather : <<include>>
+UC11 ..> Maps : <<use>>
+
+@enduml
