@@ -20,10 +20,13 @@
    2. BBP asks user to insert his informations for the account \newline
    3. User inserts his informations \newline
    4. BBP validates the inserted personal informations \newline
-   5. BBP sends the registration outcome 
+   5. BBP sends a verification email to the provided address with an OTP \newline
+   6. User inserts received OTP on BPP \newline
+   7. BBP validates inserted OTP \newline
+   8. BBP sends the registration outcome 
    \\ \hline
    \textbf{Exit conditions} & An account is created \\ \hline
-   \textbf{Exceptions} & Username already taken \newline Password not valid \newline Connection error while registering \\ \hline
+   \textbf{Exceptions} & Username already taken \newline Password not valid \newline Connection error while registering \newline OTP not valid \\ \hline
    \end{tabularx}
 \end{table}
 
@@ -211,8 +214,10 @@
    2. BBP allows users to modify saved data about trip \newline
    3. User modifies trip data \newline
    4. BBP validate changes of trip data \newline
-   5. User confirm the changes of trip data \newline
-   6. BBP modifies trip data on database and if the trip is public propagates changes for every user
+   5. User confirms the changes of trip data \newline
+   6  BBP recomputes trip statistics based on modified data \newline
+   7. BBP modifies trip data on database \newline
+   8. If the trip is public BBP propagates changes for every user
    \\ \hline
    \textbf{Exit conditions} & Trip data is modified \\ \hline
    \textbf{Exceptions} & Inserted data is not valid \newline Connection error while propagating changes of public trip\\ \hline
@@ -329,7 +334,8 @@
    \hline
    \textbf{Actor} & Registered user \\ \hline
    \textbf{Entry conditions} & 
-   User is registered and logged in \\ \hline
+   User is registered and logged in \newline
+   User is on profile page of BPP \\ \hline
    \textbf{Event flow} &
    1. User clicks on log out button \newline
    2. BBP terminate access of user on the account \newline
@@ -344,4 +350,63 @@
     \centering
     \includegraphics[width=0.9\textwidth]{./out/RASD/uml/UC13/UC13_Logout.png}
     \caption{Use Case Diagram for UC13: User logs out the account}
+\end{figure}
+
+\subsubsection*{  UC14. User deletes the account}
+
+\begin{table}[H]
+   \begin{tabular}{|p{3cm}|p{12cm}|}
+   \hline
+   \textbf{Actor} & Registered user \\ \hline
+   \textbf{Entry conditions} & 
+   User is registered and logged in \newline
+   User is on profile page of BPP \\ \hline
+   \textbf{Event flow} &
+   1. User clicks on delete account button \newline
+   2. BBP asks for confirmation \newline
+   3. User confirms account deletion \newline
+   4. BBP deletes user account and all associated data \newline
+   5. BBP returns user to home page
+   \\ \hline
+   \textbf{Exit conditions} & User is disconnected from the account and account is deleted \\ \hline
+   \textbf{Exceptions} & Connection error while deleting account \\ \hline
+   \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./out/RASD/uml/UC14/UC14_DeleteAccount.png}
+    \caption{Use Case Diagram for UC14: User deletes the account}
+\end{figure}
+
+\subsubsection*{  UC15. User recovers password of the account}
+
+\begin{table}[H]
+   \begin{tabular}{|p{3cm}|p{12cm}|}
+   \hline
+   \textbf{Actor} & Registered user \\ \hline
+   \textbf{Entry conditions} & 
+   User is on login page of BBP \\ \hline
+   \textbf{Event flow} &
+   1. User clicks on "Forgotten password" button \newline
+   2. BBP asks for email of the account \newline
+   3. User inserts email associated to the account \newline
+   4. BBP sends an OTP to the inserted email \newline
+   5. User inserts received OTP on BPP \newline
+   6. BBP validates inserted OTP \newline
+   7. User inserts new password \newline
+   8. BBP validates new password \newline
+   9. User confirms new password \newline
+   10. BBP updates password of the account \newline
+   11. BBP returns user to login page \\ \hline
+   \\ \hline
+   \textbf{Exit conditions} & Password is successfully reset \\ \hline
+   \textbf{Exceptions} & Connection error while resetting password \newline Invalid OTP \newline New password not valid \\ \hline
+   \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./out/RASD/uml/UC15/UC15_RecoverPassword.png}
+    \caption{Use Case Diagram for UC15: User recovers password of the account}
 \end{figure}

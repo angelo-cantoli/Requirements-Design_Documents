@@ -462,6 +462,16 @@ INPUT ./out/RASD/uml/UC13/UC13_Logout.png
 INPUT ./out/RASD/uml/UC13/UC13_Logout.png
 INPUT ./out/RASD/uml/UC13/UC13_Logout.png
 INPUT ./out/RASD/uml/UC13/UC13_Logout.png
+INPUT ./out/RASD/uml/UC14/UC14_DeleteAccount.png
+INPUT ./out/RASD/uml/UC14/UC14_DeleteAccount.png
+INPUT ./out/RASD/uml/UC14/UC14_DeleteAccount.png
+INPUT ./out/RASD/uml/UC14/UC14_DeleteAccount.png
+INPUT ./out/RASD/uml/UC14/UC14_DeleteAccount.png
+INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
+INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
+INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
+INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
+INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
 INPUT ./Files/alloy.tex
 INPUT ./Files/alloy.tex
 INPUT ./Files/alloy.tex

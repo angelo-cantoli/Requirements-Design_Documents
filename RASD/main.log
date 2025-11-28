@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  27 NOV 2025 16:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  28 NOV 2025 16:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -833,11 +833,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [9] (./Files/requirements.tex
-<./out/RASD/uml/UC1/UC1_SignUp.png, id=218, 594.22pt x 518.93875pt>
+<./out/RASD/uml/UC1/UC1_SignUp.png, id=222, 639.38875pt x 778.91pt>
 File: ./out/RASD/uml/UC1/UC1_SignUp.png Graphic file (type png)
 <use ./out/RASD/uml/UC1/UC1_SignUp.png>
-Package pdftex.def Info: ./out/RASD/uml/UC1/UC1_SignUp.png  used on input line 32.
-(pdftex.def)             Requested size: 409.71692pt x 357.82265pt.
+Package pdftex.def Info: ./out/RASD/uml/UC1/UC1_SignUp.png  used on input line 35.
+(pdftex.def)             Requested size: 409.71692pt x 499.13063pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -852,10 +852,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [10
 
 ]
-<./out/RASD/uml/UC2/UC2_Login.png, id=226, 487.8225pt x 518.93875pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[11 <./out/RASD/uml/UC1/UC1_SignUp.png (PNG copy)>]
+<./out/RASD/uml/UC2/UC2_Login.png, id=234, 487.8225pt x 518.93875pt>
 File: ./out/RASD/uml/UC2/UC2_Login.png Graphic file (type png)
 <use ./out/RASD/uml/UC2/UC2_Login.png>
-Package pdftex.def Info: ./out/RASD/uml/UC2/UC2_Login.png  used on input line 57.
+Package pdftex.def Info: ./out/RASD/uml/UC2/UC2_Login.png  used on input line 60.
 (pdftex.def)             Requested size: 409.71692pt x 435.85806pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -868,7 +879,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[11 <./out/RASD/uml/UC1/UC1_SignUp.png (PNG copy)>]
+[12]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -879,11 +890,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[12 <./out/RASD/uml/UC2/UC2_Login.png (PNG copy)>]
-<./out/RASD/uml/UC3/UC3_ManualAdd.png, id=238, 572.1375pt x 895.345pt>
+[13 <./out/RASD/uml/UC2/UC2_Login.png (PNG copy)>]
+<./out/RASD/uml/UC3/UC3_ManualAdd.png, id=247, 572.1375pt x 895.345pt>
 File: ./out/RASD/uml/UC3/UC3_ManualAdd.png Graphic file (type png)
 <use ./out/RASD/uml/UC3/UC3_ManualAdd.png>
-Package pdftex.def Info: ./out/RASD/uml/UC3/UC3_ManualAdd.png  used on input line 88.
+Package pdftex.def Info: ./out/RASD/uml/UC3/UC3_ManualAdd.png  used on input line 91.
 (pdftex.def)             Requested size: 409.71692pt x 641.17781pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -896,7 +907,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[13]
+[14]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -907,11 +918,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[14 <./out/RASD/uml/UC3/UC3_ManualAdd.png (PNG copy)>]
-<./out/RASD/uml/UC4/UC4_AutoRecord.png, id=251, 714.67pt x 1096.095pt>
+[15 <./out/RASD/uml/UC3/UC3_ManualAdd.png (PNG copy)>]
+<./out/RASD/uml/UC4/UC4_AutoRecord.png, id=259, 714.67pt x 1096.095pt>
 File: ./out/RASD/uml/UC4/UC4_AutoRecord.png Graphic file (type png)
 <use ./out/RASD/uml/UC4/UC4_AutoRecord.png>
-Package pdftex.def Info: ./out/RASD/uml/UC4/UC4_AutoRecord.png  used on input line 119.
+Package pdftex.def Info: ./out/RASD/uml/UC4/UC4_AutoRecord.png  used on input line 122.
 (pdftex.def)             Requested size: 409.71692pt x 628.39326pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -924,7 +935,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[15]
+[16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -935,11 +946,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[16 <./out/RASD/uml/UC4/UC4_AutoRecord.png (PNG copy)>]
-<./out/RASD/uml/UC5/UC5_ViewHistory.png, id=263, 442.65375pt x 449.68pt>
+[17 <./out/RASD/uml/UC4/UC4_AutoRecord.png (PNG copy)>]
+<./out/RASD/uml/UC5/UC5_ViewHistory.png, id=271, 442.65375pt x 449.68pt>
 File: ./out/RASD/uml/UC5/UC5_ViewHistory.png Graphic file (type png)
 <use ./out/RASD/uml/UC5/UC5_ViewHistory.png>
-Package pdftex.def Info: ./out/RASD/uml/UC5/UC5_ViewHistory.png  used on input line 144.
+Package pdftex.def Info: ./out/RASD/uml/UC5/UC5_ViewHistory.png  used on input line 147.
 (pdftex.def)             Requested size: 409.71692pt x 416.24252pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -952,11 +963,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[17 <./out/RASD/uml/UC5/UC5_ViewHistory.png (PNG copy)>]
-<./out/RASD/uml/UC6/UC6_ViewStats.png, id=270, 571.13374pt x 466.74374pt>
+[18 <./out/RASD/uml/UC5/UC5_ViewHistory.png (PNG copy)>]
+<./out/RASD/uml/UC6/UC6_ViewStats.png, id=279, 571.13374pt x 466.74374pt>
 File: ./out/RASD/uml/UC6/UC6_ViewStats.png Graphic file (type png)
 <use ./out/RASD/uml/UC6/UC6_ViewStats.png>
-Package pdftex.def Info: ./out/RASD/uml/UC6/UC6_ViewStats.png  used on input line 170.
+Package pdftex.def Info: ./out/RASD/uml/UC6/UC6_ViewStats.png  used on input line 173.
 (pdftex.def)             Requested size: 409.71692pt x 334.83026pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -969,11 +980,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[18 <./out/RASD/uml/UC6/UC6_ViewStats.png (PNG copy)>]
-<./out/RASD/uml/UC7/UC7_PublishTrip.png, id=278, 632.3625pt x 472.76625pt>
+[19 <./out/RASD/uml/UC6/UC6_ViewStats.png (PNG copy)>]
+<./out/RASD/uml/UC7/UC7_PublishTrip.png, id=287, 632.3625pt x 472.76625pt>
 File: ./out/RASD/uml/UC7/UC7_PublishTrip.png Graphic file (type png)
 <use ./out/RASD/uml/UC7/UC7_PublishTrip.png>
-Package pdftex.def Info: ./out/RASD/uml/UC7/UC7_PublishTrip.png  used on input line 196.
+Package pdftex.def Info: ./out/RASD/uml/UC7/UC7_PublishTrip.png  used on input line 199.
 (pdftex.def)             Requested size: 409.71692pt x 306.31334pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -986,12 +997,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[19 <./out/RASD/uml/UC7/UC7_PublishTrip.png (PNG copy)>]
-<./out/RASD/uml/UC8/UC8_ModifyTrip.png, id=286, 519.9425pt x 695.59875pt>
+[20 <./out/RASD/uml/UC7/UC7_PublishTrip.png (PNG copy)>]
+<./out/RASD/uml/UC8/UC8_ModifyTrip.png, id=294, 566.115pt x 744.7825pt>
 File: ./out/RASD/uml/UC8/UC8_ModifyTrip.png Graphic file (type png)
 <use ./out/RASD/uml/UC8/UC8_ModifyTrip.png>
-Package pdftex.def Info: ./out/RASD/uml/UC8/UC8_ModifyTrip.png  used on input line 224.
-(pdftex.def)             Requested size: 409.71692pt x 548.13719pt.
+Package pdftex.def Info: ./out/RASD/uml/UC8/UC8_ModifyTrip.png  used on input line 229.
+(pdftex.def)             Requested size: 409.71692pt x 539.03865pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1003,7 +1014,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[20]
+[21]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -1014,11 +1025,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[21 <./out/RASD/uml/UC8/UC8_ModifyTrip.png (PNG copy)>]
-<./out/RASD/uml/UC9/UC9_ViewMapRoutes.png, id=297, 568.1225pt x 576.1525pt>
+[22 <./out/RASD/uml/UC8/UC8_ModifyTrip.png (PNG copy)>]
+<./out/RASD/uml/UC9/UC9_ViewMapRoutes.png, id=305, 568.1225pt x 576.1525pt>
 File: ./out/RASD/uml/UC9/UC9_ViewMapRoutes.png Graphic file (type png)
 <use ./out/RASD/uml/UC9/UC9_ViewMapRoutes.png>
-Package pdftex.def Info: ./out/RASD/uml/UC9/UC9_ViewMapRoutes.png  used on input line 248.
+Package pdftex.def Info: ./out/RASD/uml/UC9/UC9_ViewMapRoutes.png  used on input line 253.
 (pdftex.def)             Requested size: 409.71692pt x 415.52399pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1031,16 +1042,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[22 <./out/RASD/uml/UC9/UC9_ViewMapRoutes.png (PNG copy)>]
-<./out/RASD/uml/UC10/UC10_ViewPathDetails.png, id=304, 519.9425pt x 290.08376pt>
+[23 <./out/RASD/uml/UC9/UC9_ViewMapRoutes.png (PNG copy)>]
+<./out/RASD/uml/UC10/UC10_ViewPathDetails.png, id=312, 519.9425pt x 290.08376pt>
 File: ./out/RASD/uml/UC10/UC10_ViewPathDetails.png Graphic file (type png)
 <use ./out/RASD/uml/UC10/UC10_ViewPathDetails.png>
-Package pdftex.def Info: ./out/RASD/uml/UC10/UC10_ViewPathDetails.png  used on input line 271.
+Package pdftex.def Info: ./out/RASD/uml/UC10/UC10_ViewPathDetails.png  used on input line 276.
 (pdftex.def)             Requested size: 409.71692pt x 228.58823pt.
-<./out/RASD/uml/UC11/UC11_StartNav.png, id=305, 588.1975pt x 392.46625pt>
+<./out/RASD/uml/UC11/UC11_StartNav.png, id=313, 588.1975pt x 392.46625pt>
 File: ./out/RASD/uml/UC11/UC11_StartNav.png Graphic file (type png)
 <use ./out/RASD/uml/UC11/UC11_StartNav.png>
-Package pdftex.def Info: ./out/RASD/uml/UC11/UC11_StartNav.png  used on input line 294.
+Package pdftex.def Info: ./out/RASD/uml/UC11/UC11_StartNav.png  used on input line 299.
 (pdftex.def)             Requested size: 409.71692pt x 273.37706pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1053,11 +1064,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[23 <./out/RASD/uml/UC10/UC10_ViewPathDetails.png (PNG copy)>]
-<./out/RASD/uml/UC12/UC12_ModifyProfile.png, id=314, 482.80376pt x 589.20125pt>
+[24 <./out/RASD/uml/UC10/UC10_ViewPathDetails.png (PNG copy)>]
+<./out/RASD/uml/UC12/UC12_ModifyProfile.png, id=322, 482.80376pt x 589.20125pt>
 File: ./out/RASD/uml/UC12/UC12_ModifyProfile.png Graphic file (type png)
 <use ./out/RASD/uml/UC12/UC12_ModifyProfile.png>
-Package pdftex.def Info: ./out/RASD/uml/UC12/UC12_ModifyProfile.png  used on input line 321.
+Package pdftex.def Info: ./out/RASD/uml/UC12/UC12_ModifyProfile.png  used on input line 326.
 (pdftex.def)             Requested size: 409.71692pt x 500.02327pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1070,14 +1081,45 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[24 <./out/RASD/uml/UC11/UC11_StartNav.png (PNG copy)>]
-<./out/RASD/uml/UC13/UC13_Logout.png, id=321, 475.7775pt x 333.245pt>
+[25 <./out/RASD/uml/UC11/UC11_StartNav.png (PNG copy)>]
+<./out/RASD/uml/UC13/UC13_Logout.png, id=330, 475.7775pt x 333.245pt>
 File: ./out/RASD/uml/UC13/UC13_Logout.png Graphic file (type png)
 <use ./out/RASD/uml/UC13/UC13_Logout.png>
-Package pdftex.def Info: ./out/RASD/uml/UC13/UC13_Logout.png  used on input line 345.
+Package pdftex.def Info: ./out/RASD/uml/UC13/UC13_Logout.png  used on input line 351.
 (pdftex.def)             Requested size: 409.71692pt x 286.9868pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[26 <./out/RASD/uml/UC12/UC12_ModifyProfile.png (PNG copy)>]
+<./out/RASD/uml/UC14/UC14_DeleteAccount.png, id=337, 643.40375pt x 472.76625pt>
+File: ./out/RASD/uml/UC14/UC14_DeleteAccount.png Graphic file (type png)
+<use ./out/RASD/uml/UC14/UC14_DeleteAccount.png>
+Package pdftex.def Info: ./out/RASD/uml/UC14/UC14_DeleteAccount.png  used on input line 378.
+(pdftex.def)             Requested size: 409.71692pt x 301.06168pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[27 <./out/RASD/uml/UC13/UC13_Logout.png (PNG copy)>]
+<./out/RASD/uml/UC15/UC15_RecoverPassword.png, id=344, 724.7075pt x 870.25125pt>
+File: ./out/RASD/uml/UC15/UC15_RecoverPassword.png Graphic file (type png)
+<use ./out/RASD/uml/UC15/UC15_RecoverPassword.png>
+Package pdftex.def Info: ./out/RASD/uml/UC15/UC15_RecoverPassword.png  used on input line 410.
+(pdftex.def)             Requested size: 409.71692pt x 492.01157pt.
 )
-Underfull \vbox (badness 3250) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -1087,7 +1129,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[25 <./out/RASD/uml/UC12/UC12_ModifyProfile.png (PNG copy)>]
+[28 <./out/RASD/uml/UC14/UC14_DeleteAccount.png (PNG copy)>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1095,7 +1137,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[26 <./out/RASD/uml/UC13/UC13_Logout.png (PNG copy)>] (./Files/alloy.tex)
+[29 <./out/RASD/uml/UC15/UC15_RecoverPassword.png (PNG copy)>] (./Files/alloy.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1103,7 +1145,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[27
+[30
 
 ] (./Files/effort.tex)
 
@@ -1113,7 +1155,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[28
+[31
 
 ] (./main.bbl
 
@@ -1127,7 +1169,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[29
+[32
 
 ] (./main.aux)
  ***********
@@ -1138,18 +1180,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 55D471F993051B3F1B21B9AF3FF2A7A9;4179.
  ) 
 Here is how much of TeX's memory you used:
- 25360 strings out of 467538
- 469701 string characters out of 5423724
- 860294 words of memory out of 5000000
- 53688 multiletter control sequences out of 15000+600000
+ 25383 strings out of 467538
+ 470508 string characters out of 5423724
+ 860318 words of memory out of 5000000
+ 53702 multiletter control sequences out of 15000+600000
  655370 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,20n,97p,452b,671s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (29 pages, 473614 bytes).
+Output written on main.pdf (32 pages, 573423 bytes).
 PDF statistics:
- 383 PDF objects out of 1000 (max. 8388607)
- 329 compressed objects within 4 object streams
- 103 named destinations out of 1000 (max. 500000)
- 307 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 408 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 317 words of extra memory for PDF output out of 10000 (max. 10000000)
 

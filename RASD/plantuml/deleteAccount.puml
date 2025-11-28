@@ -1,0 +1,26 @@
+@startuml UC14_DeleteAccount
+title UC14 - User deletes account
+actor "Registered User" as User
+participant "BBP System" as System
+
+autonumber
+' Entry: User is on profile page
+
+User -> System: Clicks "Delete account" button
+activate System
+System -> User: Asks for confirmation
+deactivate System
+
+User -> System: Confirms account deletion
+activate System
+
+alt Connection OK
+    System -> System: Deletes user account and associated data
+    System -> User: Returns to Home Page
+    note right: Exit Condition: Account deleted & User disconnected
+else Exception: Connection error
+    System --> User: Error: Connection failed
+end
+
+deactivate System
+@enduml

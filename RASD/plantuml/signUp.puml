@@ -1,0 +1,41 @@
+@startuml UC1_SignUp
+title UC1 - Unregistered user registers an account
+actor "Unregistered User" as User
+participant "BBP System" as System
+
+autonumber
+' Entry: User is on login page
+
+User -> System: Clicks to register
+System -> User: Asks for account information
+User -> System: Inserts information
+activate System
+
+System -> System: Validates personal information
+
+alt Information Valid
+    System -> User: Sends verification email with OTP
+    
+    User -> System: Inserts received OTP
+    System -> System: Validates OTP
+
+    alt OTP Valid
+        
+        alt Connection OK
+            System -> System: Creates account
+            System -> User: Sends registration outcome (Success)
+            note right: Exit Condition: Account created
+        else Exception: Connection error
+            System --> User: Error: Connection failed
+        end
+
+    else Exception: OTP not valid
+        System --> User: Error: Invalid OTP
+    end
+
+else Exception: Username taken OR Password invalid
+    System --> User: Error: Username taken / Password invalid
+end
+
+deactivate System
+@enduml

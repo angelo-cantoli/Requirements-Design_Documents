@@ -1,0 +1,37 @@
+@startuml UC8_ModifyTrip
+title UC8 - User modify one of his saved trips
+actor "Registered User" as User
+participant "BBP System" as System
+
+autonumber
+' Entry: User selected a specific trip from history
+
+User -> System: Clicks "Modify trip"
+activate System
+System -> User: Allows modification form
+User -> System: Modifies trip data
+System -> System: Validate changes
+
+alt Data Valid
+    User -> System: Confirms changes
+    System -> System: Recomputes trip statistics
+    
+    System -> System: Modifies trip data on database
+    
+    opt Trip is Public
+        alt Connection OK
+            System -> System: Propagate changes to all users
+        else Exception: Connection error
+            System --> User: Error: Propagation failed
+        end
+    end
+    
+    System -> User: Confirm modification outcome
+    note right: Exit Condition: Trip data is modified
+
+else Exception: Inserted data not valid
+    System --> User: Error: Invalid data
+end
+
+deactivate System
+@enduml
