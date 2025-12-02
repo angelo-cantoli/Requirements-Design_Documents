@@ -397,6 +397,11 @@ INPUT ./Files/requirements.tex
 INPUT ./Files/requirements.tex
 INPUT ./Files/requirements.tex
 INPUT Files/requirements.tex
+INPUT ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png
+INPUT ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png
+INPUT ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png
+INPUT ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png
+INPUT ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png
 INPUT ./out/RASD/uml/UC1/UC1_SignUp.png
 INPUT ./out/RASD/uml/UC1/UC1_SignUp.png
 INPUT ./out/RASD/uml/UC1/UC1_SignUp.png
@@ -472,6 +477,11 @@ INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
 INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
 INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
 INPUT ./out/RASD/uml/UC15/UC15_RecoverPassword.png
+INPUT ./out/RASD/uml/UC16/deleteTrip.png
+INPUT ./out/RASD/uml/UC16/deleteTrip.png
+INPUT ./out/RASD/uml/UC16/deleteTrip.png
+INPUT ./out/RASD/uml/UC16/deleteTrip.png
+INPUT ./out/RASD/uml/UC16/deleteTrip.png
 INPUT ./Files/alloy.tex
 INPUT ./Files/alloy.tex
 INPUT ./Files/alloy.tex

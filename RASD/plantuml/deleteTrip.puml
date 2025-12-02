@@ -1,0 +1,49 @@
+@startuml
+autonumber
+
+actor "Registered User" as User
+participant "BBP System" as System
+
+title UC16: User deletes a recorded trip
+
+note over User, System
+  Pre-conditions:
+  User is logged in
+  User selected a specific trip from history
+end note
+
+' Step 1
+User -> System: Clicks on "Delete trip" button
+activate System
+
+' Step 2
+System --> User: Asks for confirmation
+deactivate System
+
+' Step 3
+User -> System: Confirms deletion
+activate System
+
+group Internal Processing
+    ' Step 4: Internal action
+    System -> System: Delete trip from internal Database
+    
+    alt Deletion Successful
+        
+        ' Step 5: Conditional logic
+        opt Trip is Public
+            System -> System: Propagate deletion to public views
+        end
+        
+        ' Exit condition
+        System --> User: Show success message & Update list
+        
+    else Connection Error (Exception)
+        ' Exception Flow
+        System --> User: Show error message (Operation failed)
+    end
+end
+
+deactivate System
+
+@enduml

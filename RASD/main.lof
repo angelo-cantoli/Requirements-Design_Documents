@@ -1,15 +1,17 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Use Case Diagram for UC1: Unregistered user signs up}}{11}{figure.caption.8}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Use Case Diagram for UC2: User logs in the account}}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Use Case Diagram for UC3: User manually adds bike trip}}{15}{figure.caption.14}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Use Case Diagram for UC4: User automatically records bike trip}}{17}{figure.caption.17}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Use Case Diagram for UC5: User views his bike trip history}}{18}{figure.caption.20}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Use Case Diagram for UC6: User views his bike trip statistics}}{19}{figure.caption.23}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Use Case Diagram for UC7: User publishes recorded trip}}{20}{figure.caption.26}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Use Case Diagram for UC8: User modifies one of his saved trips}}{22}{figure.caption.29}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Use Case Diagram for UC9: User views possible bike routes on map}}{23}{figure.caption.32}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Use Case Diagram for UC10: User views additional information about selected path on map}}{24}{figure.caption.35}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Use Case Diagram for UC11: User start navigation on selected bike path}}{25}{figure.caption.38}%
-\contentsline {figure}{\numberline {12}{\ignorespaces Use Case Diagram for UC12: User modifies profile data}}{26}{figure.caption.41}%
-\contentsline {figure}{\numberline {13}{\ignorespaces Use Case Diagram for UC13: User logs out the account}}{27}{figure.caption.44}%
-\contentsline {figure}{\numberline {14}{\ignorespaces Use Case Diagram for UC14: User deletes the account}}{28}{figure.caption.47}%
-\contentsline {figure}{\numberline {15}{\ignorespaces Use Case Diagram for UC15: User recovers password of the account}}{29}{figure.caption.50}%
+\contentsline {figure}{\numberline {1}{\ignorespaces High level Use Case Diagram}}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Use Case Diagram for UC1: Unregistered user signs up}}{15}{figure.caption.14}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Use Case Diagram for UC2: User logs in the account}}{17}{figure.caption.17}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Use Case Diagram for UC3: User manually adds bike trip}}{19}{figure.caption.20}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Use Case Diagram for UC4: User automatically records bike trip}}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Use Case Diagram for UC5: User views his bike trip history}}{22}{figure.caption.26}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Use Case Diagram for UC6: User views his bike trip statistics}}{23}{figure.caption.29}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Use Case Diagram for UC7: User publishes recorded trip}}{24}{figure.caption.32}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Use Case Diagram for UC8: User modifies one of his saved trips}}{26}{figure.caption.35}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Use Case Diagram for UC9: User views possible bike routes on map}}{27}{figure.caption.38}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Use Case Diagram for UC10: User views additional information about selected path on map}}{28}{figure.caption.41}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Use Case Diagram for UC11: User start navigation on selected bike path}}{29}{figure.caption.44}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Use Case Diagram for UC12: User modifies profile data}}{30}{figure.caption.47}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Use Case Diagram for UC13: User logs out the account}}{31}{figure.caption.50}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Use Case Diagram for UC14: User deletes the account}}{32}{figure.caption.53}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Use Case Diagram for UC15: User recovers password of the account}}{34}{figure.caption.56}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Use Case Diagram for UC16: User deletes a recorded trip}}{35}{figure.caption.59}%

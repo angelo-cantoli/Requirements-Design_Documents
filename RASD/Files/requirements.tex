@@ -1,5 +1,40 @@
 \subsection{External Interface Requirements}
 
+\subsubsection{User interface}
+
+BBP’s user interface is a mobile application, available for Android and iOS. 
+
+The UI should be intuitive and easy to understand, since the users will be of all age groups and with varying levels of familiarity with technology. 
+The UI will contain sections to allow viewing bike paths from other users, viewing personal bike path archive, recording or inserting new bike paths, and publishing saved bike paths.
+
+\subsubsection{Hardware Interface}
+
+The system requires a smartphone with the BBP application installed and internet connection capabilities. 
+
+Furthermore, the smartphone should have a GPS localization system and some sensors, such as gyroscope and accelerometer: in absence of these the app will not be able to complete automated recordings of bike trips.
+
+\subsubsection{Software interface}
+
+The system requires some software interfaces for the correct functioning.
+
+The most important is the DBMS that will be used for communicating with the database of the application, in fact many times data is required to be persistent so this interface is necessary to the correct functioning of the database.
+
+Other than DBMS there are services focused on some specific feature of the application. 
+
+One is the third-party meteorological service and its API that make it possible for BBP to retrieve meteorological information and insert them in the application for enrichment of trips data. 
+
+Another important software is the third-party mapping service that is fundamental for one the most important features, to visualize paths on map, relative to published bike trips.
+
+\subsubsection{Communication interface}
+
+Some communication interfaces are involved in exchanging data between components in the network and clients.
+
+The HTTP/HTTPS is fundamental to the front-end application to communicate with the back-end and to APIs of mapping and meteorological services. This protocol make possible and safe the hypertext transfer
+
+JSON is another interface for communication, representing the format of the data payload transmitted over the network
+
+Another communication interface is the SMTP protocol, for sending and receiving of email, useful for confirmation of email account sending OTP to user’s email.
+
 \subsection{Functional Requirements}
 
 \subsubsection{Requirements}
@@ -504,7 +539,6 @@ PUBLISHED PATH VIEWING
    9. User confirms new password \newline
    10. BBP updates password of the account \newline
    11. BBP returns user to login page \\ \hline
-   \\ \hline
    \textbf{Exit conditions} & Password is successfully reset \\ \hline
    \textbf{Exceptions} & Connection error while resetting password \newline Invalid OTP \newline New password not valid \\ \hline
    \end{tabular}
@@ -516,3 +550,135 @@ PUBLISHED PATH VIEWING
     \includegraphics[width=0.9\textwidth]{./out/RASD/uml/UC15/UC15_RecoverPassword.png}
     \caption{Use Case Diagram for UC15: User recovers password of the account}
 \end{figure}
+
+\subsubsection*{  UC16. User deletes a recorded trip}
+
+\begin{table}[H]
+   \begin{tabular}{|p{3cm}|p{12cm}|}
+   \hline
+   \textbf{Actor} & Registered user \\ \hline
+   \textbf{Entry conditions} & 
+   User is registered and logged in \newline
+   User selected a specific trip from history \\ \hline
+   \textbf{Event flow} &
+   1. User clicks on "Delete trip" button \newline
+   2. BBP asks for confirmation \newline
+   3. User confirms deletion \newline
+   4. BBP deletes trip from database \newline
+   5. If the trip is public BBP propagates deletion for every user
+   \\ \hline
+   \textbf{Exit conditions} & Trip is successfully deleted \\ \hline
+   \textbf{Exceptions} & Connection error while deleting trip \\ \hline
+   \end{tabular}
+   \caption{Use Case UC16: User deletes a recorded trip}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./out/RASD/uml/UC16/deleteTrip.png}
+    \caption{Use Case Diagram for UC16: User deletes a recorded trip}
+\end{figure}
+
+\subsubsection{Mapping on requirements}
+
+\begin{longtable}{|p{3cm}|p{12cm}|}
+    
+    \caption[]{Use Case UC16: User deletes a recorded trip} \\
+    \hline
+    \textbf{Use case} & \textbf{Requirements} \\ \hline
+    \endhead
+   UC1 & 
+   R1. System accepts account registration data \newline
+   R2. System rejects account registrations with duplicate emails or usernames \newline 
+   R3. System sends a verification email with an OTP to the email address provided during registration \newline 
+   R4. System must verify OTP code before confirming registration \\ \hline
+   UC2 &
+   R5. System allows users to login to their account by authenticating via email (or username) and password \newline 
+   R8. System allows users to modify/recover their password via email verification \\ \hline
+   UC3 & 
+   R19. System allows users to manually record trips by inserting starting and ending locations, names of roads in traversal order, start and end times \newline 
+   R20. System allows users to specify road status (optimal, medium, sufficient, requires maintenance) during manual recording \newline 
+   R21. System allows users to specify obstacle locations during manual recording \newline 
+   R22. System persistently stores recorded trips \newline 
+   R23. System ensures only author of recorded trips can access unpublished trip records \newline 
+   R24. System automatically calculates statistics for each recorded trip (distance, average speed, duration, elevation, average slope) \newline 
+   R25. System calculates statistics immediately after trip is saved \newline 
+   R26. System calculates aggregate statistics across all of user’s recorded trips \newline 
+   R27. System recomputes aggregate statistics upon modification of user’s trip record (add/delete/edit trip) \newline 
+   R28. System persistently stores computed statistics with corresponding trip data \newline 
+   R30. System queries an external meteorological service for weather data to enrich trip data after completion \newline 
+   R31. System stores a notice in trip data when weather data is unavailable \\ \hline
+   UC4 & 
+   R10. System allows users to start automated trip recording \newline 
+   R11. System requests necessary sensor and GPS permissions when automated recording is started \newline 
+   R12. System begins automated path and sensor tracking, after recording initiation, only when user has started biking \newline 
+   R13. System algorithmically detects if a user has started biking from speed data \newline 
+   R14. System collects GPS coordinates during automated trip recording \newline 
+   R15. System reconstructs traveled path from collected GPS coordinates \newline 
+   R16. System collects data from mobile device’s accelerometer and gyroscope during automated trip recording \newline 
+   R17. System algorithmically interprets collected sensor data to detect potential obstacles along the path \newline 
+   R18. System allows users to manually stop automated trip recording \newline 
+   R22. System persistently stores recorded trips \newline 
+   R23. System ensures only author of recorded trips can access unpublished trip records \newline 
+   R24. System automatically calculates statistics for each recorded trip (distance, average speed, duration, elevation, average slope) \newline 
+   R25. System calculates statistics immediately after trip is saved \newline 
+   R26. System calculates aggregate statistics across all of user’s recorded trips \newline 
+   R27. System recomputes aggregate statistics upon modification of user’s trip record (add/delete/edit trip) \newline 
+   R28. System persistently stores computed statistics with corresponding trip data \newline 
+   R29. System infers road status from detected obstacle density and movement pattern analysis when trip data is recorded automatically \newline 
+   R30. System queries an external meteorological service for weather data to enrich trip data after completion \newline 
+   R31. System stores a notice in trip data when weather data is unavailable \\ \hline
+   UC5 & 
+   R23. System ensures only author of recorded trips can access unpublished trip records \newline 
+   R26. System calculates aggregate statistics across all of user’s recorded trips \newline 
+   R32. System displays a list of user’s recorded trips showing name, date, start and end locations \newline 
+   R33. System allows users to view detailed trip data for any recorded trip, including route map, statistics and weather data \\ \hline
+   UC6 & 
+   R24. System automatically calculates statistics for each recorded trip (distance, average speed, duration, elevation, average slope) \newline 
+   R26. System calculates aggregate statistics across all of user’s recorded trips \newline 
+   R28. System persistently stores computed statistics with corresponding trip data \newline 
+   R30. System queries an external meteorological service for weather data to enrich trip data after completion \newline 
+   R31. System stores a notice in trip data when weather data is unavailable \newline 
+   R33. System allows users to view detailed trip data for any recorded trip, including route map, statistics and weather data \\ \hline
+   UC7 & 
+   R38. System allows registered users to publish their recorded trips, making them publicly available \newline 
+   R39. System requires the user to correct and confirm data before publishing, if it was acquired automatically \newline 
+   R40. System allows users to add/remove obstacle markers during data correction \newline 
+   R41. System allows users to modify road status during data correction \\ \hline
+   UC8 & 
+   R27. System recomputes aggregate statistics upon modification of user’s trip record (add/delete/edit trip) \newline 
+   R34. System allows users to manually edit trip data for any of their recorded trips \newline 
+   R36. System propagates modifications and deletions of trips to their published versions, if present \\ \hline
+   UC9 & 
+   R42. System allows all users to view published bike paths between specified start and end points \newline 
+   R43. System identifies all published bike paths that connect specified start and end points \newline 
+   R44. System notifies user when no published paths exist between the specified points \newline 
+   R45. System calculates a score for each identified bike path based on road status, route effectiveness (distance and directness in reaching destination), amount of obstacles, path difficulty (slope) \newline 
+   R46. System displays all identified paths on a map, with the highest scoring path highlighted and the others with reduced opacity \newline 
+   R47. System displays score values for each path \newline 
+   R48. System initially displays a limited amount of the identified paths, providing the option to view all paths \newline 
+   R49. System allows users to select a displayed path \newline 
+   R50. System allows users to view additional information about selected path (status, obstacles) \newline 
+   R51. System allows users to export selected path to compatible third-party navigation applications \\ \hline
+   UC10 & 
+   R49. System allows users to select a displayed path \newline 
+   R50. System allows users to view additional information about selected path (status, obstacles) \newline 
+   R51. System allows users to export selected path to compatible third-party navigation applications \\ \hline
+   UC11 & 
+   R49. System allows users to select a displayed path \newline 
+   R51. System allows users to export selected path to compatible third-party navigation applications \\ \hline
+   UC12 & 
+   R7. System allows users to modify their account information (username and personal data) \newline 
+   R8. System allows users to modify/recover their password via email verification \\ \hline
+   UC13 & 
+   R6. System allows users to logout of their account \\ \hline
+   UC14 & 
+   R9. System allows users to delete their account, with all the associated data \\ \hline
+   UC15 & 
+   R8. System allows users to modify/recover their password via email verification \\ \hline
+   UC16 &
+   R27. System recomputes aggregate statistics upon modification of user’s trip record (add/delete/edit trip) \newline 
+   R35. System allows users to delete any of their recorded trips \newline 
+   R36. System propagates modifications and deletions of trips to their published versions, if present \\ \hline
+
+\end{longtable}
