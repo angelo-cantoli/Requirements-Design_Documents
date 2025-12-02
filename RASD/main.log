@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  2 DEC 2025 11:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  2 DEC 2025 12:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -855,7 +855,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [11]
-<./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png, id=306, 883.3pt x 1193.45876pt>
+<./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png, id=302, 883.3pt x 1193.45876pt>
 File: ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png Graphic file (type png)
 <use ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png>
 Package pdftex.def Info: ./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png  used on input line 129.
@@ -880,7 +880,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [13 <./out/RASD/uml/HIGH_LEVEL_UC/highLevelUC.png (PNG copy)>]
-<./out/RASD/uml/UC1/UC1_SignUp.png, id=317, 639.38875pt x 778.91pt>
+<./out/RASD/uml/UC1/UC1_SignUp.png, id=313, 639.38875pt x 778.91pt>
 File: ./out/RASD/uml/UC1/UC1_SignUp.png Graphic file (type png)
 <use ./out/RASD/uml/UC1/UC1_SignUp.png>
 Package pdftex.def Info: ./out/RASD/uml/UC1/UC1_SignUp.png  used on input line 160.
@@ -908,7 +908,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [15 <./out/RASD/uml/UC1/UC1_SignUp.png (PNG copy)>]
-<./out/RASD/uml/UC2/UC2_Login.png, id=328, 487.8225pt x 518.93875pt>
+<./out/RASD/uml/UC2/UC2_Login.png, id=324, 487.8225pt x 518.93875pt>
 File: ./out/RASD/uml/UC2/UC2_Login.png Graphic file (type png)
 <use ./out/RASD/uml/UC2/UC2_Login.png>
 Package pdftex.def Info: ./out/RASD/uml/UC2/UC2_Login.png  used on input line 186.
@@ -936,7 +936,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [17 <./out/RASD/uml/UC2/UC2_Login.png (PNG copy)>]
-<./out/RASD/uml/UC3/UC3_ManualAdd.png, id=339, 764.8575pt x 999.735pt>
+<./out/RASD/uml/UC3/UC3_ManualAdd.png, id=335, 764.8575pt x 999.735pt>
 File: ./out/RASD/uml/UC3/UC3_ManualAdd.png Graphic file (type png)
 <use ./out/RASD/uml/UC3/UC3_ManualAdd.png>
 Package pdftex.def Info: ./out/RASD/uml/UC3/UC3_ManualAdd.png  used on input line 219.
@@ -964,7 +964,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [19 <./out/RASD/uml/UC3/UC3_ManualAdd.png (PNG copy)>]
-<./out/RASD/uml/UC4/UC4_AutoRecord.png, id=351, 873.2625pt x 1200.485pt>
+<./out/RASD/uml/UC4/UC4_AutoRecord.png, id=347, 873.2625pt x 1200.485pt>
 File: ./out/RASD/uml/UC4/UC4_AutoRecord.png Graphic file (type png)
 <use ./out/RASD/uml/UC4/UC4_AutoRecord.png>
 Package pdftex.def Info: ./out/RASD/uml/UC4/UC4_AutoRecord.png  used on input line 252.
@@ -992,7 +992,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [21 <./out/RASD/uml/UC4/UC4_AutoRecord.png (PNG copy)>]
-<./out/RASD/uml/UC5/UC5_ViewHistory.png, id=362, 442.65375pt x 449.68pt>
+<./out/RASD/uml/UC5/UC5_ViewHistory.png, id=358, 442.65375pt x 449.68pt>
 File: ./out/RASD/uml/UC5/UC5_ViewHistory.png Graphic file (type png)
 <use ./out/RASD/uml/UC5/UC5_ViewHistory.png>
 Package pdftex.def Info: ./out/RASD/uml/UC5/UC5_ViewHistory.png  used on input line 278.
@@ -1009,7 +1009,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [22 <./out/RASD/uml/UC5/UC5_ViewHistory.png (PNG copy)>]
-<./out/RASD/uml/UC6/UC6_ViewStats.png, id=368, 571.13374pt x 466.74374pt>
+<./out/RASD/uml/UC6/UC6_ViewStats.png, id=364, 571.13374pt x 466.74374pt>
 File: ./out/RASD/uml/UC6/UC6_ViewStats.png Graphic file (type png)
 <use ./out/RASD/uml/UC6/UC6_ViewStats.png>
 Package pdftex.def Info: ./out/RASD/uml/UC6/UC6_ViewStats.png  used on input line 305.
@@ -1026,7 +1026,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [23 <./out/RASD/uml/UC6/UC6_ViewStats.png (PNG copy)>]
-<./out/RASD/uml/UC7/UC7_PublishTrip.png, id=374, 632.3625pt x 472.76625pt>
+<./out/RASD/uml/UC7/UC7_PublishTrip.png, id=370, 632.3625pt x 472.76625pt>
 File: ./out/RASD/uml/UC7/UC7_PublishTrip.png Graphic file (type png)
 <use ./out/RASD/uml/UC7/UC7_PublishTrip.png>
 Package pdftex.def Info: ./out/RASD/uml/UC7/UC7_PublishTrip.png  used on input line 332.
@@ -1043,7 +1043,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [24 <./out/RASD/uml/UC7/UC7_PublishTrip.png (PNG copy)>]
-<./out/RASD/uml/UC8/UC8_ModifyTrip.png, id=380, 566.115pt x 744.7825pt>
+<./out/RASD/uml/UC8/UC8_ModifyTrip.png, id=376, 566.115pt x 744.7825pt>
 File: ./out/RASD/uml/UC8/UC8_ModifyTrip.png Graphic file (type png)
 <use ./out/RASD/uml/UC8/UC8_ModifyTrip.png>
 Package pdftex.def Info: ./out/RASD/uml/UC8/UC8_ModifyTrip.png  used on input line 363.
@@ -1071,7 +1071,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [26 <./out/RASD/uml/UC8/UC8_ModifyTrip.png (PNG copy)>]
-<./out/RASD/uml/UC9/UC9_ViewMapRoutes.png, id=391, 568.1225pt x 576.1525pt>
+<./out/RASD/uml/UC9/UC9_ViewMapRoutes.png, id=387, 568.1225pt x 576.1525pt>
 File: ./out/RASD/uml/UC9/UC9_ViewMapRoutes.png Graphic file (type png)
 <use ./out/RASD/uml/UC9/UC9_ViewMapRoutes.png>
 Package pdftex.def Info: ./out/RASD/uml/UC9/UC9_ViewMapRoutes.png  used on input line 388.
@@ -1088,12 +1088,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [27 <./out/RASD/uml/UC9/UC9_ViewMapRoutes.png (PNG copy)>]
-<./out/RASD/uml/UC10/UC10_ViewPathDetails.png, id=397, 519.9425pt x 290.08376pt>
+<./out/RASD/uml/UC10/UC10_ViewPathDetails.png, id=393, 519.9425pt x 290.08376pt>
 File: ./out/RASD/uml/UC10/UC10_ViewPathDetails.png Graphic file (type png)
 <use ./out/RASD/uml/UC10/UC10_ViewPathDetails.png>
 Package pdftex.def Info: ./out/RASD/uml/UC10/UC10_ViewPathDetails.png  used on input line 412.
 (pdftex.def)             Requested size: 409.71692pt x 228.58823pt.
-<./out/RASD/uml/UC11/UC11_StartNav.png, id=398, 588.1975pt x 392.46625pt>
+<./out/RASD/uml/UC11/UC11_StartNav.png, id=394, 588.1975pt x 392.46625pt>
 File: ./out/RASD/uml/UC11/UC11_StartNav.png Graphic file (type png)
 <use ./out/RASD/uml/UC11/UC11_StartNav.png>
 Package pdftex.def Info: ./out/RASD/uml/UC11/UC11_StartNav.png  used on input line 436.
@@ -1110,7 +1110,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [28 <./out/RASD/uml/UC10/UC10_ViewPathDetails.png (PNG copy)>]
-<./out/RASD/uml/UC12/UC12_ModifyProfile.png, id=405, 482.80376pt x 589.20125pt>
+<./out/RASD/uml/UC12/UC12_ModifyProfile.png, id=401, 482.80376pt x 589.20125pt>
 File: ./out/RASD/uml/UC12/UC12_ModifyProfile.png Graphic file (type png)
 <use ./out/RASD/uml/UC12/UC12_ModifyProfile.png>
 Package pdftex.def Info: ./out/RASD/uml/UC12/UC12_ModifyProfile.png  used on input line 464.
@@ -1138,7 +1138,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [30 <./out/RASD/uml/UC12/UC12_ModifyProfile.png (PNG copy)>]
-<./out/RASD/uml/UC13/UC13_Logout.png, id=416, 475.7775pt x 333.245pt>
+<./out/RASD/uml/UC13/UC13_Logout.png, id=412, 475.7775pt x 333.245pt>
 File: ./out/RASD/uml/UC13/UC13_Logout.png Graphic file (type png)
 <use ./out/RASD/uml/UC13/UC13_Logout.png>
 Package pdftex.def Info: ./out/RASD/uml/UC13/UC13_Logout.png  used on input line 490.
@@ -1155,7 +1155,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [31 <./out/RASD/uml/UC13/UC13_Logout.png (PNG copy)>]
-<./out/RASD/uml/UC14/UC14_DeleteAccount.png, id=423, 643.40375pt x 472.76625pt>
+<./out/RASD/uml/UC14/UC14_DeleteAccount.png, id=419, 643.40375pt x 472.76625pt>
 File: ./out/RASD/uml/UC14/UC14_DeleteAccount.png Graphic file (type png)
 <use ./out/RASD/uml/UC14/UC14_DeleteAccount.png>
 Package pdftex.def Info: ./out/RASD/uml/UC14/UC14_DeleteAccount.png  used on input line 518.
@@ -1172,7 +1172,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [32 <./out/RASD/uml/UC14/UC14_DeleteAccount.png (PNG copy)>]
-<./out/RASD/uml/UC15/UC15_RecoverPassword.png, id=429, 724.7075pt x 870.25125pt>
+<./out/RASD/uml/UC15/UC15_RecoverPassword.png, id=425, 724.7075pt x 870.25125pt>
 File: ./out/RASD/uml/UC15/UC15_RecoverPassword.png Graphic file (type png)
 <use ./out/RASD/uml/UC15/UC15_RecoverPassword.png>
 Package pdftex.def Info: ./out/RASD/uml/UC15/UC15_RecoverPassword.png  used on input line 550.
@@ -1200,7 +1200,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [34 <./out/RASD/uml/UC15/UC15_RecoverPassword.png (PNG copy)>]
-<./out/RASD/uml/UC16/deleteTrip.png, id=439, 603.25375pt x 644.4075pt>
+<./out/RASD/uml/UC16/deleteTrip.png, id=435, 603.25375pt x 644.4075pt>
 File: ./out/RASD/uml/UC16/deleteTrip.png Graphic file (type png)
 <use ./out/RASD/uml/UC16/deleteTrip.png>
 Package pdftex.def Info: ./out/RASD/uml/UC16/deleteTrip.png  used on input line 578.
@@ -1258,7 +1258,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [40
 
-] (./Files/effort.tex)
+] (./Files/effort.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1268,41 +1268,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [41
 
-] (./main.bbl
-
-LaTeX Warning: Empty `thebibliography' environment on input line 3.
-
-)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[42
-
 ] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EE0DD8852F22DEFA302BACC316580C29;5273.
- ) 
+(rerunfilecheck)             Checksum: 12CD6AA63D19DA35F3AD8C76B1A99A26;5179.
+ ) ) 
 Here is how much of TeX's memory you used:
- 25436 strings out of 467538
- 471729 string characters out of 5423724
+ 25427 strings out of 467538
+ 471582 string characters out of 5423724
  877317 words of memory out of 5000000
- 53728 multiletter control sequences out of 15000+600000
+ 53723 multiletter control sequences out of 15000+600000
  655370 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,20n,97p,452b,671s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (42 pages, 767505 bytes).
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on main.pdf (41 pages, 785438 bytes).
 PDF statistics:
- 522 PDF objects out of 1000 (max. 8388607)
- 450 compressed objects within 5 object streams
- 139 named destinations out of 1000 (max. 500000)
- 383 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 523 PDF objects out of 1000 (max. 8388607)
+ 448 compressed objects within 5 object streams
+ 138 named destinations out of 1000 (max. 500000)
+ 375 words of extra memory for PDF output out of 10000 (max. 10000000)
 
