@@ -1,4 +1,61 @@
 \subsection{Product Perspective}
+
+\subsubsection{Class Diagrams}
+
+\subsubsection{State Diagrams}
+
+\subsubsection{Scenarios}
+
+\textbf{User Creates an Account}\\
+J. Doe is a frequent cyclist, and desires an application that gives them the opportunity to log their cycling 
+activity, and find information about the best bike routes in his city. They find that BBP perfectly 
+suits their needs, and proceed to install the application. The application at first only shows the 
+path viewing functionality: J. Doe wants to also record their trips, so they proceed to the ‘sign up’ 
+section. The system then asks them to set a username, email and password, which J. Doe inserts, along 
+with some optional personal information that they choose not to include. Inserting the username ‘JD’, 
+the system responds that this username has already been taken, and prompts to insert a new username. 
+Upon insertion of a different username, which was not taken by any other user, the system notifies 
+that an email was sent to the specified address with a code, which is required to complete the 
+registration. Upon inserting the code, the system creates the new account, and J. Doe can begin 
+using the complete application. \\
+\newline
+\textbf{Registered User Automatically Records a Trip}\\
+J. Doe is about to go biking in their city. Before going out to get their bike, they decide that they 
+want to record this trip using BBP, so they open the app, where they are logged in to their account, 
+and initiate an automated recording of a new trip. The system starts acquiring GPS and sensor data 
+from the smartphone, and waits until J. Doe starts biking: at that point, the speed detected by the 
+system is high enough to start tracking the device in order to reconstruct the path. While biking, 
+J. Doe encounters a pothole: their bike lurches to one side, and the system perceives from the mobile 
+device’s sensors that an abnormal movement has occurred, therefore it notes that an obstacle was 
+encountered in that location. At the end of their trip, J. Doe gets off their bike and stops the 
+recording, at which BBP notifies that the trip was successfully saved to their trip record. \\
+\newline
+\textbf{Registered User Manually Records a Trip}\\
+J.Doe has finished cycling along a new route they found in their city, and they want to save the path 
+in BBP while it is still fresh in their memory, since they didn’t activate the automated recording 
+before starting to bike. They go to the ‘manual trip insertion’ section of the application, which 
+requests the insertion of a starting and ending location and time, and the names and status of all 
+roads on the route, in the order in which they were traversed. Additionally the system gives the 
+option to mark any obstacles encountered along the route: J. Doe remembers seeing some potholes on 
+some of the roads, so they mark them. Once all the information has been inserted, they press ‘save trip’, 
+at which point the system reconstructs the path from the provided data and saves the trip to J. Doe’s 
+record. \\
+\newline
+\textbf{User Looks at Possible Bike Paths}\\
+J. Doe wants to bike to a new attraction that has recently opened in their city. However, he has never 
+been to that neighbourhood, so they want to see if they can find any paths that can quickly and easily 
+take them there. They open the BBP and go to the ‘path viewing’ section: after inserting their current 
+location as an origin, and the attraction’s location as a destination, the system searches for any published 
+paths which are suitable for this route. It finds a couple of paths, and calculates a score for each 
+one before displaying them on a map: the one with the highest score is highlighted. J. Doe selects the 
+highlighted path and checks what additional information is provided: BBP shows that the path isn’t the 
+most direct way to reach the destination, but it is relatively flat and devoid of obstacles. J. Doe then 
+selects the next highest scoring path: this path is more direct, but has more obstacles and roads in 
+worse conditions, thus scoring lower. J. Doe considers that they want to reach the destination as quickly 
+as possible, and thinks that their mountain bike is sturdy enough to not care too much about the worse 
+road conditions, therefore they press the ‘export path’ button and choose to export the path to Google 
+Maps, so they may begin navigation.
+
 \subsection{Product Functions}
 
 \textbf{Sign up \& Login} \\
