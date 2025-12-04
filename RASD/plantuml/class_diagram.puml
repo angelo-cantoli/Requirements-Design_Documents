@@ -1,0 +1,187 @@
+@startuml ClassDiagram
+
+
+skinparam classAttributeIconSize 0
+hide empty methods
+hide circle
+
+
+enum RecordingMode <<enum>> {
+    MANUAL
+    AUTOMATED
+}
+
+enum RoadStatus <<enum>> {
+    OPTIMAL
+    MEDIUM
+    SUFFICIENT
+    REQUIRES_MAINTENANCE
+}
+
+class MotionData <<DataType>> {
+    '-accelerationVector: Vector3D
+    '-rotationVector: Vector3D
+    '-timestamp: Time
+}
+
+class GPSData <<DataType>> {
+    '-location: Location
+    '-timestamp: Time
+    '-currentSpeed: Float
+    '-accuracy: Float
+}
+
+class Location <<DataType>> {
+    -latitude: Float
+    -longitude: Float
+}
+
+class ManualPathEntry <<DataType>> {
+    -streetName: String
+    -status: RoadStatus
+}
+
+class AggregateStatistics {
+    -totalDistance: Float
+    -averageDistance: Float
+    -totalDuration: Time
+    -averageDuration: Time
+    -averageSpeed: Float
+    -averageSlope: Float
+}
+
+
+class BBP_System {
+    
+    +searchPaths(origin: Location, destination: Location): Path[*]
+    +calculateScore(path: Path): Float
+    
+    '
+    +generateStatistics(trip: Trip): Statistics
+    +generateAggregateStatistics(user: RegisteredUser): AggregateStatistics
+    
+    ' 
+    +detectBiking(speed: GPSData): Boolean
+    +detectObstacle(movement: MotionData): Boolean
+    
+    '
+    +insertManualTrip(user: RegisteredUser, name: String, origin: Location, destination: Location, 
+    segments: ManualPathEntry[*], startTime: Timestamp, endTime: Timestamp, obstacles: Location[*]): void
+    
+    '
+    +startRecording(user: RegisteredUser): void
+    +stopRecording(user: RegisteredUser): void
+    
+    '
+    +editTrip(trip: Trip, editData: Trip): void
+    +deleteTrip(t: Trip): void
+    +publishTrip(t: Trip): void
+}
+
+' --- Users & Devices ---
+
+class User {
+}
+
+class RegisteredUser extends User {
+    -username: String
+    -email: String
+    -password: String
+    -name: String
+    -birthDate: Date
+    -profilePicture: Image
+}
+
+class MobileDevice {
+    -deviceId: String
+}
+
+class Sensor {
+    -type: String
+}
+
+
+class Trip {
+    -name: String
+    -startTime: Timestamp
+    -endTime: Timestamp
+    -mode: RecordingMode
+    -isPublished: Boolean
+    -isVerified: Boolean
+}
+
+class Statistics {
+    -distance: Float
+    -averageSpeed: Float
+    -duration: Time
+    -elevationDifference: Float
+    -effectiveElevation: Float
+    -averageSlope: Float
+}
+
+class Path {
+
+}
+
+class PathSegment {
+    -start: Location
+    -end: Location
+    -streetName: String
+    -status: RoadStatus
+}
+
+class Obstacle {
+    -name: String
+    -location: Location
+}
+
+class MeteorologicalData {
+    -condition: String
+    -temperature: Float
+    -windSpeed: Float
+}
+
+
+class "External Weather Service" as WeatherService <<External>> {
+}
+
+class "Navigation App" as NavApp <<External>> {
+}
+
+
+BBP_System "1" -- "0..*" User : interacts >
+BBP_System "1" -- "0..*" Trip : manages >
+BBP_System "1" -- "0..*" WeatherService : queries >
+
+
+RegisteredUser "1" *-- "1..*" MobileDevice : owns >
+MobileDevice "1" *-- "1..*" Sensor : contains >
+
+
+RegisteredUser "1" *-- "1" AggregateStatistics : generates >
+
+
+Sensor ..> MotionData : produces >
+Sensor ..> GPSData : produces >
+
+BBP_System ..> MotionData : analyzes >
+BBP_System ..> GPSData : analyzes >
+BBP_System ..> ManualPathEntry : processes >
+
+RegisteredUser "1" -- "0..*" Trip : records >
+
+
+Trip "1" *-- "1" Path : traverses >
+Trip "1" *-- "1" Statistics : generates >
+Trip "1" -- "0..1" MeteorologicalData : enriched >
+
+
+Path "1" *-- "1..*" PathSegment : composed >
+PathSegment "1" *-- "0..*" Obstacle : contains >
+
+
+Path ..> NavApp : exported >
+
+
+
+@enduml
