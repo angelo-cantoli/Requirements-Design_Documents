@@ -1,0 +1,30 @@
+@startuml StatisticsGeneration
+hide empty description
+
+state "Compute Statistics" as Compute
+
+state "Update Aggregate Statistics" as Update
+
+state "Query External Weather Service" as Query
+
+state "Enrich Data" as Retrieve
+
+state "Add Data to Trip" as Add
+
+state choice <<choice>>
+
+
+
+[*] -> Compute: trip saved
+
+Compute -> Update
+
+Update --> Query
+
+Query -l> choice
+
+choice --> Retrieve: weather data available
+Retrieve --> Add
+choice --> Add: weather data not available
+
+Add --> [*]

@@ -1,0 +1,51 @@
+@startuml ManageTrips
+hide empty description
+
+state "View Trip History" as ViewHistory
+
+state "View Trip" as ViewTrip
+
+state choice <<choice>>
+
+state "Edit Trip" as Edit
+
+state "Update Statistics" as UpdateStat
+
+state "Delete Trip" as Delete
+
+state "Verify Trip" as Verify
+
+state "Publish Trip" as Publish {
+    state choice2 <<choice>>
+    state "Verify Trip" as Verify2
+    state "Publish Trip" as Publish2
+
+    [*] --> choice2
+    choice2 --> Verify2: trip not verified
+    choice2 --> Publish2: trip verified
+    Verify2 --> Publish2
+    Publish2 --> [*]
+}
+
+state "Update Aggregate Statistics" as UpdateAgg
+
+[*] -> ViewHistory
+
+ViewHistory -> ViewTrip: select trip
+
+ViewTrip -> choice: choose action
+
+choice --> Edit
+choice --> Delete
+choice --> Verify
+choice --> Publish
+choice -l> ViewHistory: return to history
+
+Edit --> UpdateStat
+UpdateStat -> UpdateAgg
+
+Delete --> UpdateAgg
+UpdateAgg --> [*]
+
+Verify --> [*]
+Publish --> [*]

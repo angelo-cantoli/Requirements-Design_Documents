@@ -1,0 +1,42 @@
+@startuml ManualTripInsertion
+hide empty description
+
+
+state "New Trip Insertion" as NewTripInsertion
+
+state "Path Insertion" as PathInsertion
+PathInsertion: insert road names
+PathInsertion: insert road status
+PathInsertion: insert obstacle locations
+
+state "Location Insertion" as LocationInsertion
+LocationInsertion: insert starting location
+LocationInsertion: insert ending location
+
+state "Time Insertion" as TimeInsertion
+TimeInsertion: insert starting time
+TimeInsertion: insert ending time
+
+state "Path Reconstruction" as PathReconstruction
+state "Save Trip" as SaveTrip
+
+state fork <<fork>>
+state join <<join>>
+
+[*] -> NewTripInsertion
+
+NewTripInsertion -> fork
+
+fork --> PathInsertion
+fork --> LocationInsertion
+fork --> TimeInsertion
+
+PathInsertion --> join
+LocationInsertion --> join
+TimeInsertion --> join
+
+join --> PathReconstruction: save trip pressed
+
+PathReconstruction -> SaveTrip
+SaveTrip -> [*]
+

@@ -12,6 +12,56 @@ relationship between them.
 
 \subsubsection{State Diagrams}
 
+\textbf{Account Creation}\\
+The following state diagram describes the process of a new unregistered user creating a new account
+using the BBP app.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./Images/AccountCreation.png}
+    \caption{Account Creation State Diagram}
+\end{figure}
+\noindent
+\textbf{Manual Trip Insertion}\\
+The following state diagram describes the process of a registered user manually inserting a new trip.
+The statistics generation process takes place after the insertion, and is described in the following
+state diagrams.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{./Images/ManualTripInsertion.png}
+    \caption{Manual Trip Insertion State Diagram}
+\end{figure}
+\noindent
+\textbf{Automated Trip Recording}\\
+The following state diagram describes the process of a registered user recording a bike trip using
+BBP's automated recording feature. The statistics generation process takes place after the insertion, and is described in the following
+state diagrams.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{./Images/AutomatedTripInsertion.png}
+    \caption{Automated Trip Recording State Diagram}
+\end{figure}
+\noindent
+\textbf{Statistics Generation}\\
+The following state diagram describes the process of generating individual and aggregate statistics
+upon a trip being saved. It also details the process of enriching the trip data with meteorological
+information.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{./Images/StatisticsGeneration.png}
+    \caption{Statistics Generation State Diagram}
+\end{figure}
+\noindent
+\textbf{Trip Management}\\
+The following state diagram describes the process of a registered user viewing and managing trips in
+their trip history.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{./Images/ManageTrips.png}
+    \caption{Trip Management State Diagram}
+\end{figure}
+
+
+
 \subsubsection{Scenarios}
 
 \textbf{User Creates an Account}\\

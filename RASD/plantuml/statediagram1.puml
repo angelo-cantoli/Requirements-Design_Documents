@@ -1,0 +1,22 @@
+@startuml AccountCreation
+hide empty description
+
+state Unregistered
+state "Personal Data Insertion" as PersonalDataInsertion
+state "Email Verification" as EmailVerification
+state "Account Creation" as AccountCreation 
+
+[*] -> Unregistered
+
+Unregistered -> PersonalDataInsertion: begin registration
+
+PersonalDataInsertion --> EmailVerification: data valid
+PersonalDataInsertion --> PersonalDataInsertion: username/email already taken
+
+EmailVerification --> AccountCreation: email valid
+EmailVerification --> PersonalDataInsertion: verification failed
+
+AccountCreation --> [*]
+
+
+@enduml

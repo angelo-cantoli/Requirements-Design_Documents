@@ -1,0 +1,29 @@
+@startuml AutomatedTripInsertion
+hide empty description
+
+state "Initiate Automated Recording" as InitiateRecording
+
+state "Wait for Biking Speed" as Wait
+
+state "Path Tracking" as Tracking
+Tracking: track GPS position
+Tracking: detect obstacles
+
+state "End Automated Recording" as EndRecording
+state "Save Trip" as SaveTrip
+
+state "Calculate Status" as Calculate
+
+[*] -> InitiateRecording: user starts new recording
+
+InitiateRecording -> Wait
+
+Wait --> Tracking: biking speed reached
+
+Tracking -l> EndRecording: user ends recording
+
+EndRecording --> Calculate
+
+Calculate -> SaveTrip
+
+SaveTrip -> [*]
