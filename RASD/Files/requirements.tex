@@ -722,3 +722,40 @@ PUBLISHED PATH VIEWING
    R36. System propagates modifications and deletions of trips to their published versions, if present \\ \hline
 
 \end{longtable}
+
+\subsection{Performance Requirements}
+\textbf{Number of users} \\
+The main performance requirement of the system is the ability to support a large number 
+of users. Given that the number of recreational and professional cyclists is large: a 
+survey in 2022 shows that around 37\% of people in Italy state that they go cycling at 
+least once a week, and in the european countries where the survey was taken the percentages 
+of cyclists go from 25\% (Canada) to 65\% (Netherlands). Therefore, as the community of 
+cyclists grows, we can expect a rapidly growing number of users; in light of this the 
+scalability of the system is critical, as it must be able to accommodate increasing 
+numbers of users with minimal performance loss. \\
+\newline
+\textbf{Data Storage} \\
+Another critical aspect is the data storing capability of the system. For each bike trip 
+record, the system must store path information and generated statistics: as the number 
+of users and the number of records saved by each user grows, so will the amount of storage 
+needed; therefore, the system’s storage capabilities must be easily scalable 
+proportionally to the number of users and the amount of records each user has saved. \\
+\newline
+\textbf{Response Time} \\
+There are no strict time response requirements, therefore the system should handle all 
+requests within 3 seconds.
+
+\subsection{Design Constraints}
+\textbf{Standards Compliance} \\
+GDPR: the system manages personal user data, therefore it must comply with privacy and 
+data treatment regulations; to work in the EU, it must comply with the EU GDPR. \\
+\newline
+\textbf{Hardware Limitations}
+The BBP system is accessed exclusively through a mobile application. The user must have 
+a mobile device with a compatible operating system (Android or iOS), and in order to utilize 
+the automated recording function of BBP it must have a GPS module, an accelerometer and 
+a gyroscope. The device must have the capability to maintain a stable internet connection. \\ 
+\newline
+\textbf{Any Other Constraint}
+The mobile device should have a compatible third-party navigation application (e.g. Google 
+Maps) if the user wants to utilize the navigation functionality of the path viewer.
