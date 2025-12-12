@@ -746,16 +746,54 @@ There are no strict time response requirements, therefore the system should hand
 requests within 3 seconds.
 
 \subsection{Design Constraints}
-\textbf{Standards Compliance} \\
+\subsubsection{Standards Compliance}
 GDPR: the system manages personal user data, therefore it must comply with privacy and 
-data treatment regulations; to work in the EU, it must comply with the EU GDPR. \\
-\newline
-\textbf{Hardware Limitations}
+data treatment regulations; to work in the EU, it must comply with the EU GDPR.
+
+\subsubsection{Hardware Limitations}
 The BBP system is accessed exclusively through a mobile application. The user must have 
 a mobile device with a compatible operating system (Android or iOS), and in order to utilize 
 the automated recording function of BBP it must have a GPS module, an accelerometer and 
-a gyroscope. The device must have the capability to maintain a stable internet connection. \\ 
-\newline
-\textbf{Any Other Constraint}
+a gyroscope. The device must have the capability to maintain a stable internet connection.
+
+\subsubsection{Any Other Constraint}
 The mobile device should have a compatible third-party navigation application (e.g. Google 
 Maps) if the user wants to utilize the navigation functionality of the path viewer.
+
+\subsection{Software System Attributes}
+
+\subsubsection{Reliability}
+The BBP system main functionalities are about data management, which aren’t to be 
+considered critical, as in case of failure the operation can be repeated. The automatic 
+tracking of trips is more sensitive, as in case of interruption some of the tracking 
+data may be lost or incomplete. Therefore, a failure rate between 1\% and 0.1\% 
+(between common systems and more high-quality reliable systems) would be ideal.
+
+\subsubsection{Availability}
+The BBP system should strive to give the best possible experience to its users, 
+however it does not offer critical functionalities that require it to be constantly 
+available. Therefore, an availability of 99\% (with around 4 days of downtime per 
+year) would be acceptable to guarantee that the users are satisfied with the service.
+
+\subsubsection{Security}
+The BBP system stores personal user information, and has communication between the 
+system and the various users’ mobile devices. Therefore, it should assure that data 
+is private and encrypted when information is exchanged through the internet: a secure 
+encrypted protocol such as HTTPS should be used. Furthermore, all information stored 
+by BBP should be encrypted, and stored passwords should be hashed and salted in order 
+to ensure privacy.
+
+\subsubsection{Maintainability}
+The BBP system should be appropriately divided into different modules based on the provided 
+functionalities. The system should be built with ease of maintenance and scalability in 
+mind, especially considering that the number of users could grow over time; the design should allow maintenance of single modules without impacting the rest of the system. Moreover, every implemented functionality should be rigorously and extensively documented.
+
+\subsubsection{Portability}
+The BBP software is a mobile application which does not have strict software or 
+hardware restrictions. Therefore, to ensure a higher portability, the system should 
+be developed for both Android and iOS if possible, in order to be available on the 
+majority of modern smartphones. Considering budget constraints the application could 
+either be developed separately for each platform, which is more costly in terms of 
+development and maintenance, or using cross-platform development tools, which would 
+reduce the development cost.
+
