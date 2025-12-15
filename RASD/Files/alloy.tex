@@ -1,0 +1,271 @@
+\subsection{Alloy Code}
+
+
+    
+\begin{minted}{Alloy}
+open util/integer
+open util/ordering[TimeStamp]
+
+// SIGNATURES ----------------------------------------------------
+
+sig User {}
+
+sig RegisteredUser extends User {
+    var records: disj set Trip,
+    generates: disj AggregateStatistics,
+    has: disj MobileDevice
+}
+
+sig Trip {
+    mode: RecordingMode,
+    var isPublished: Bool,
+    var isVerified: Bool,
+    generates: disj Statistics,
+    traverses: disj Path,
+    enrichedBy: disj lone MeteorologicalData,
+    startTime: TimeStamp,
+    endTime: TimeStamp
+} {
+    lt[startTime, endTime]
+}
+
+sig AggregateStatistics {
+} {
+    this in RegisteredUser.generates
+}
+
+sig Statistics {
+} {
+    this in Trip.generates
+}
+
+sig Path {
+    composedBy: seq PathSegment
+} {
+    this in Trip.traverses and
+    #composedBy > 0
+}
+
+sig PathSegment {
+    contains: disj set Obstacle,
+    starts: Location,
+    ends: Location,
+    status: RoadStatus
+} {
+    this in Path.composedBy.elems and
+    starts != ends
+}
+
+sig Obstacle {
+    positioned: Location
+} {
+    this in PathSegment.contains
+}
+
+sig MeteorologicalData {
+} {
+    this in Trip.enrichedBy
+}
+
+sig MobileDevice {
+    contains: disj some Sensor
+} {
+    this in User.has
+}
+
+sig Sensor {
+    type: SensorType
+} {
+    this in MobileDevice.contains
+}
+
+sig Location {
+} {
+    this in PathSegment.starts or
+    this in PathSegment.ends or
+    this in Obstacle.positioned
+}
+
+sig TimeStamp {
+} {
+    this in Trip.startTime or
+    this in Trip.endTime
+}
+
+enum RecordingMode {MANUAL, AUTOMATED}
+
+enum RoadStatus {OPTIMAL, MEDIUM, SUFFICIENT, REQUIRES_MAINTENANCE}
+
+enum SensorType {GPS, GYRO, ACCELEROMETER}
+
+enum Bool {TRUE, FALSE}
+
+
+// FACTS ----------------------------------------------------
+
+// A trip must be verified in order to be published
+fact PublishedTripMustBeVerified {
+    always(
+        all t: Trip |
+        (t.mode = AUTOMATED and t.isPublished = TRUE) implies 
+        t.isVerified = TRUE
+    )
+}
+
+// When trips are recorded, they are private
+fact TripsStartNotPublished {
+    all t: Trip |
+        t.isPublished = FALSE and
+        after always (
+            t.isPublished = TRUE 
+            implies
+            once t.isPublished = FALSE
+        )
+}
+
+// If an trip is recorded in automated mode, it is not verified 
+// until the user corrects the data
+fact TripsStartNotVerifiedIfAutomated {
+    all t: Trip |
+        t.mode = AUTOMATED implies (
+            t.isVerified = FALSE and
+            after always (
+                t.isVerified = TRUE 
+                implies
+                once t.isVerified = FALSE
+            )
+        )
+}
+
+// Manually inserted trips do not need to be verified
+fact ManualTripsVerified {
+    always (
+        all t: Trip |
+            t.mode = MANUAL implies t.isVerified = TRUE
+    )
+}
+
+// Path segments that compose a path must be connected
+fact PathSegmentsAreConnected {
+    all p: Path |
+        all i: Int | 
+            (i in p.composedBy.inds and i != p.composedBy.lastIdx) 
+            implies  
+            p.composedBy[i].ends = p.composedBy[add[i,1]].starts
+}
+
+// A user cannot have two trips that take place at the same time
+fact NoConcurrentTrips {
+    all u: RegisteredUser |
+        all disj t1, t2: Trip |
+            (t1 in u.records and t2 in u.records)
+            implies
+            (lte[t1.endTime, t2.startTime] or lte[t2.endTime, t1.startTime])
+}
+
+// All user's mobile devices have GPS functionalities
+fact AllUsersHaveGPS {
+    all u: RegisteredUser |
+        one s: Sensor | s.type = GPS and s in u.has.contains
+}
+
+
+// Trips can be owned by only one user
+fact TripsOwnedByOnlyOneUser {
+    all t: Trip, u: RegisteredUser |
+        t in u.records implies always(
+            no u1: RegisteredUser | 
+                u1 != u and t in u1.records
+        )
+}
+
+// PREDICATES ----------------------------------------------------
+
+pred recordTrip[u: RegisteredUser, t: Trip, m: RecordingMode] {
+    no u2: RegisteredUser | t in u2.records
+    t.mode = m
+
+    u.records' = u.records + t
+                     
+    t.isPublished' = FALSE            
+    
+    all u1: RegisteredUser - u | u1.records' = u1.records
+    
+    all t1: Trip - t | {
+        t1.isPublished' = t1.isPublished
+        t1.isVerified' = t1.isVerified
+    }
+}
+
+run recordTrip
+
+pred verifyTrip[u: RegisteredUser, t: Trip] {
+    t in u.records
+    t.isVerified = FALSE
+
+    t.isVerified' = TRUE
+
+    -- Frame Conditions
+    t.isPublished' = t.isPublished
+    
+    all u1: RegisteredUser | u1.records' = u1.records
+
+    all t1: Trip - t | {
+        t1.isPublished' = t1.isPublished
+        t1.isVerified' = t1.isVerified
+    }
+}
+
+run verifyTrip
+
+pred publishTrip[u: RegisteredUser, t: Trip] {
+    t in u.records
+    t.isPublished = FALSE
+
+    (t.mode = AUTOMATED) implies (t.isVerified = TRUE)
+
+    t.isPublished' = TRUE
+
+    -- Frame Conditions
+
+    t.isVerified' = t.isVerified
+
+    all u1: RegisteredUser | u1.records' = u1.records
+
+    all t1: Trip - t | {
+        t1.isPublished' = t1.isPublished
+        t1.isVerified' = t1.isVerified
+    }
+}
+
+run publishTrip
+
+pred deleteTrip[u: RegisteredUser, t: Trip] {
+    t in u.records
+
+    u.records' = u.records - t
+
+    -- Frame Conditions
+    all u1: RegisteredUser - u | u1.records' = u1.records
+
+    all t1: Trip - t | {
+        t1.isPublished' = t1.isPublished
+        t1.isVerified' = t1.isVerified
+    }
+}
+
+run deleteTrip
+
+
+pred showScenario {
+    some disj u1, u2: RegisteredUser, disj t1, t2: Trip | {
+        recordTrip[u1, t1, AUTOMATED]
+        after verifyTrip[u1, t1]
+        after after publishTrip[u1, t1]
+        after after after recordTrip[u2, t2, MANUAL]
+        after after after after deleteTrip[u2, t2]
+    }
+}
+
+run showScenario for 5 but 3 Int, 6 TimeStamp
+\end{minted}
