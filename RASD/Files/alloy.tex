@@ -1,7 +1,12 @@
+This section regards the formal analysis of the BBP system using the Alloy specification
+language. The analysis focalizes on the management of the trips recorded by the various
+users, showing the evolution of the system after a trip is recorded, modified, verified,
+published, or deleted. This anlaysis is meant to show how the various components of the 
+system interact while it is carrying out one of its core functionalities, and verifies 
+that all the steps of the trip lifecycle have been correctly defined. All predicates shown
+in the Alloy code below have been found to be consistent.
+
 \subsection{Alloy Code}
-
-
-    
 \begin{minted}{Alloy}
 open util/integer
 open util/ordering[TimeStamp]
@@ -269,3 +274,39 @@ pred showScenario {
 
 run showScenario for 5 but 3 Int, 6 TimeStamp
 \end{minted}
+
+\subsection{Simulations}
+The simulations shown refer to the predicate 'showScenario'. They show the evolution of the world
+after each defined operation is performed (recording, verifying, publishing and deleting a trip);
+two different registered users are shown performing the operations so that it is apparent that they
+according to what would be expected.
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale=0.3]{./Images/alloyScenario0.png}
+    \caption{Simulation Step 0}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale=0.3]{./Images/alloyScenario1.png}
+    \caption{Simulation Step 1}
+    \end{subfigure}
+    \caption{Simulation Steps 0-1}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale=0.3]{./Images/alloyScenario2.png}
+    \caption{Simulation Step 2}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+    \includegraphics[scale=0.3]{./Images/alloyScenario3.png}
+    \caption{Simulation Step 3}
+    \end{subfigure}
+    \caption{Simulation Steps 2-3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.45]{./Images/alloyScenario4.png}
+    \caption{Simulation Step 4}
+\end{figure}
