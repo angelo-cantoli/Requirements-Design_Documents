@@ -91,9 +91,37 @@ The application is intended for smartphone, where it can make use of GPS and sen
 \subsection{Revision History}
 \subsection{Reference Documents}
 
+\begin{itemize}
+   \item Assignment RDD AY 2025-2026.pdf
+   \item Lecture slides and notes from the course Software Engineering 2 2025/2026
+   \item Global Advisor-Cycling Across the World-2022 Report.pdf - \newline https://www.ipsos.com/sites/default/files/ct/news/documents/2022-05/Global%20Advisor-Cycling%20Across%20the%20World-2022%20Report.pdf
+\end{itemize}
+
+\subsubsection*{Used Tools}
+The following tools have been used to create this document:
+\begin{itemize}
+    \item \textbf{LaTeX}: for document preparation and typesetting.
+    \item \textbf{PlantUML}: for creating UML diagrams included in the document.
+    \item \textbf{GitHub}: for version control and collaboration on the document source files.
+    \item \textbf{Alloy Analyzer}: for formal analysis and verification of system specifications.
+    \item \textbf{VSCode}: as the main text editor for writing LaTeX code.
+\end{itemize}
 
 \subsection{Document Structure}
 
 The structure of the document is as follows:
-
-The first part is an introduction that 
+\begin{itemize}
+    \item \textbf{Introduction}: The document begins by defining the purpose of BBP and outlining the core goals such as maintaining accurate trip records and enabling informed route selections. 
+    
+    This section also lists all phenomenas, differentiating between world phenomena and shared phenomena while providing essential definitions and acronyms.
+    \item \textbf{Overall Description}: The second section provides a high-level perspective of the product through domain model class diagrams and state diagrams for account creation, trip insertion, and statistics generation. 
+    
+    It details primary functions, defining the characteristics of registered versus unregistered users and lists all assumption on the domain of the system and the relative environment.
+    \item \textbf{Specific Requirements}: This technical section details the external interfaces for user, hardware, and software interactions. It enumerates the functional requirements covering every functionality of the app. 
+    
+    The core of this section consists of the use cases mapped to specific requirements and goals. It concludes with performance standards, design constraints and specification of system attributes.
+    \item \textbf{Formal Analysis}: The fourth section utilizes the Alloy specification language to formally verify the system logic. 
+    
+    It includes the Alloy code that defines the lifecycle of a trip—from initial recording to verification and final publication, including constraints that specifies correct transitions between states. 
+    \item \textbf{Effort Spent}: The final section provides a transparent breakdown of the time invested by the authors, Bedini Simone and Cantoli Angelo.
+\end{itemize}
