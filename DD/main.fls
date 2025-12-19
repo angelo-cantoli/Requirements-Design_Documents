@@ -404,6 +404,10 @@ INPUT ./Files/introduction.tex
 INPUT ./Files/introduction.tex
 INPUT ./Files/introduction.tex
 INPUT Files/introduction.tex
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmb8t.tfm
+INPUT c:/texlive/2025/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
+INPUT c:/texlive/2025/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT ./Files/architecture.tex
 INPUT ./Files/architecture.tex
 INPUT ./Files/architecture.tex
