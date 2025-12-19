@@ -1,0 +1,267 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{open}\PYG{+w}{ }\PYG{n}{util}\PYG{o}{/}\PYG{n}{integer}
+\PYG{k+kn}{open}\PYG{+w}{ }\PYG{n}{util}\PYG{o}{/}\PYG{n}{ordering}\PYG{o}{[}\PYG{n}{TimeStamp}\PYG{o}{]}
+
+\PYG{c+c1}{// SIGNATURES \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{User}\PYG{+w}{ }\PYG{o}{\PYGZob{}\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{k}{extends}\PYG{+w}{ }\PYG{n}{User}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{var}\PYG{+w}{ }\PYG{n}{records}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{Trip}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{generates}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{n}{AggregateStatistics}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{has}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{n}{MobileDevice}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{mode}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RecordingMode}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{var}\PYG{+w}{ }\PYG{n}{isPublished}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Bool}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{var}\PYG{+w}{ }\PYG{n}{isVerified}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Bool}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{generates}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{n}{Statistics}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{traverses}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{n}{Path}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{enrichedBy}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{k}{lone}\PYG{+w}{ }\PYG{n}{MeteorologicalData}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{startTime}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{TimeStamp}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{endTime}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{TimeStamp}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{lt}\PYG{o}{[}\PYG{n}{startTime}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{endTime}\PYG{o}{]}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{AggregateStatistics}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{o}{.}\PYG{n}{generates}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{Statistics}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{.}\PYG{n}{generates}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{Path}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{composedBy}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{seq}\PYG{+w}{ }\PYG{n}{PathSegment}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{.}\PYG{n}{traverses}\PYG{+w}{ }\PYG{o+ow}{and}
+\PYG{+w}{    }\PYG{o}{\PYGZsh{}}\PYG{n}{composedBy}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{PathSegment}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{contains}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{Obstacle}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{starts}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Location}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{ends}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Location}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{status}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RoadStatus}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{Path}\PYG{o}{.}\PYG{n}{composedBy}\PYG{o}{.}\PYG{n}{elems}\PYG{+w}{ }\PYG{o+ow}{and}
+\PYG{+w}{    }\PYG{n}{starts}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{ends}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{Obstacle}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{positioned}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Location}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{PathSegment}\PYG{o}{.}\PYG{n}{contains}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{MeteorologicalData}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{.}\PYG{n}{enrichedBy}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{MobileDevice}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{contains}\PYG{p}{:}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{k}{some}\PYG{+w}{ }\PYG{n}{Sensor}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{User}\PYG{o}{.}\PYG{n}{has}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{Sensor}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{type}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{SensorType}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{MobileDevice}\PYG{o}{.}\PYG{n}{contains}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{Location}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{PathSegment}\PYG{o}{.}\PYG{n}{starts}\PYG{+w}{ }\PYG{o+ow}{or}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{PathSegment}\PYG{o}{.}\PYG{n}{ends}\PYG{+w}{ }\PYG{o+ow}{or}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{Obstacle}\PYG{o}{.}\PYG{n}{positioned}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{sig}\PYG{+w}{ }\PYG{n}{TimeStamp}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{o}{\PYGZcb{}}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{.}\PYG{n}{startTime}\PYG{+w}{ }\PYG{o+ow}{or}
+\PYG{+w}{    }\PYG{k}{this}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{.}\PYG{n}{endTime}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{enum}\PYG{+w}{ }\PYG{n}{RecordingMode}\PYG{+w}{ }\PYG{o}{\PYGZob{}}\PYG{n}{MANUAL}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{AUTOMATED}\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{enum}\PYG{+w}{ }\PYG{n}{RoadStatus}\PYG{+w}{ }\PYG{o}{\PYGZob{}}\PYG{n}{OPTIMAL}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MEDIUM}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{SUFFICIENT}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{REQUIRES\PYGZus{}MAINTENANCE}\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{enum}\PYG{+w}{ }\PYG{n}{SensorType}\PYG{+w}{ }\PYG{o}{\PYGZob{}}\PYG{n}{GPS}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{GYRO}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ACCELEROMETER}\PYG{o}{\PYGZcb{}}
+
+\PYG{k+kd}{enum}\PYG{+w}{ }\PYG{n}{Bool}\PYG{+w}{ }\PYG{o}{\PYGZob{}}\PYG{n}{TRUE}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{FALSE}\PYG{o}{\PYGZcb{}}
+
+
+\PYG{c+c1}{// FACTS \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{c+c1}{// A trip must be verified in order to be published}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{PublishedTripMustBeVerified}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{always}\PYG{o}{(}
+\PYG{+w}{        }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{o}{(}\PYG{n}{t}\PYG{o}{.}\PYG{n}{mode}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{AUTOMATED}\PYG{+w}{ }\PYG{o+ow}{and}\PYG{+w}{ }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}\PYG{o}{)}\PYG{+w}{ }\PYG{o+ow}{implies}
+\PYG{+w}{        }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}
+\PYG{+w}{    }\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{c+c1}{// When trips are recorded, they are private}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{TripsStartNotPublished}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FALSE}\PYG{+w}{ }\PYG{o+ow}{and}
+\PYG{+w}{        }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{always}\PYG{+w}{ }\PYG{o}{(}
+\PYG{+w}{            }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}
+\PYG{+w}{            }\PYG{o+ow}{implies}
+\PYG{+w}{            }\PYG{k}{once}\PYG{+w}{ }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FALSE}
+\PYG{+w}{        }\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{c+c1}{// If an trip is recorded in automated mode, it is not verified}
+\PYG{c+c1}{// until the user corrects the data}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{TripsStartNotVerifiedIfAutomated}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{n}{t}\PYG{o}{.}\PYG{n}{mode}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{AUTOMATED}\PYG{+w}{ }\PYG{o+ow}{implies}\PYG{+w}{ }\PYG{o}{(}
+\PYG{+w}{            }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FALSE}\PYG{+w}{ }\PYG{o+ow}{and}
+\PYG{+w}{            }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{always}\PYG{+w}{ }\PYG{o}{(}
+\PYG{+w}{                }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}
+\PYG{+w}{                }\PYG{o+ow}{implies}
+\PYG{+w}{                }\PYG{k}{once}\PYG{+w}{ }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FALSE}
+\PYG{+w}{            }\PYG{o}{)}
+\PYG{+w}{        }\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{c+c1}{// Manually inserted trips do not need to be verified}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{ManualTripsVerified}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{always}\PYG{+w}{ }\PYG{o}{(}
+\PYG{+w}{        }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{            }\PYG{n}{t}\PYG{o}{.}\PYG{n}{mode}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{MANUAL}\PYG{+w}{ }\PYG{o+ow}{implies}\PYG{+w}{ }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}
+\PYG{+w}{    }\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{c+c1}{// Path segments that compose a path must be connected}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{PathSegmentsAreConnected}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Path}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{:}\PYG{+w}{ }\PYG{k+kt}{Int}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{            }\PYG{o}{(}\PYG{n}{i}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{p}\PYG{o}{.}\PYG{n}{composedBy}\PYG{o}{.}\PYG{n}{inds}\PYG{+w}{ }\PYG{o+ow}{and}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{p}\PYG{o}{.}\PYG{n}{composedBy}\PYG{o}{.}\PYG{n}{lastIdx}\PYG{o}{)}
+\PYG{+w}{            }\PYG{o+ow}{implies}
+\PYG{+w}{            }\PYG{n}{p}\PYG{o}{.}\PYG{n}{composedBy}\PYG{o}{[}\PYG{n}{i}\PYG{o}{].}\PYG{n}{ends}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{p}\PYG{o}{.}\PYG{n}{composedBy}\PYG{o}{[}\PYG{n}{add}\PYG{o}{[}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{o}{]].}\PYG{n}{starts}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{c+c1}{// A user cannot have two trips that take place at the same time}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{NoConcurrentTrips}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{k}{all}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{n}{t1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t2}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{            }\PYG{o}{(}\PYG{n}{t1}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}\PYG{+w}{ }\PYG{o+ow}{and}\PYG{+w}{ }\PYG{n}{t2}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}\PYG{o}{)}
+\PYG{+w}{            }\PYG{o+ow}{implies}
+\PYG{+w}{            }\PYG{o}{(}\PYG{n}{lte}\PYG{o}{[}\PYG{n}{t1}\PYG{o}{.}\PYG{n}{endTime}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t2}\PYG{o}{.}\PYG{n}{startTime}\PYG{o}{]}\PYG{+w}{ }\PYG{o+ow}{or}\PYG{+w}{ }\PYG{n}{lte}\PYG{o}{[}\PYG{n}{t2}\PYG{o}{.}\PYG{n}{endTime}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{startTime}\PYG{o}{])}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{c+c1}{// All user\PYGZsq{}s mobile devices have GPS functionalities}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{AllUsersHaveGPS}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{k}{one}\PYG{+w}{ }\PYG{n}{s}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Sensor}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{s}\PYG{o}{.}\PYG{n}{type}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{GPS}\PYG{+w}{ }\PYG{o+ow}{and}\PYG{+w}{ }\PYG{n}{s}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{has}\PYG{o}{.}\PYG{n}{contains}
+\PYG{o}{\PYGZcb{}}
+
+
+\PYG{c+c1}{// Trips can be owned by only one user}
+\PYG{k}{fact}\PYG{+w}{ }\PYG{n}{TripsOwnedByOnlyOneUser}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{        }\PYG{n}{t}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}\PYG{+w}{ }\PYG{o+ow}{implies}\PYG{+w}{ }\PYG{k}{always}\PYG{o}{(}
+\PYG{+w}{            }\PYG{k}{no}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{|}
+\PYG{+w}{                }\PYG{n}{u1}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{o+ow}{and}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}
+\PYG{+w}{        }\PYG{o}{)}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{c+c1}{// PREDICATES \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{k}{pred}\PYG{+w}{ }\PYG{n}{recordTrip}\PYG{o}{[}\PYG{n}{u}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{m}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RecordingMode}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{no}\PYG{+w}{ }\PYG{n}{u2}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u2}\PYG{o}{.}\PYG{n}{records}
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{mode}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{m}
+
+\PYG{+w}{    }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{t}
+
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FALSE}
+
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}
+
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}
+\PYG{+w}{    }\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k}{run}\PYG{+w}{ }\PYG{n}{recordTrip}
+
+\PYG{k}{pred}\PYG{+w}{ }\PYG{n}{verifyTrip}\PYG{o}{[}\PYG{n}{u}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{t}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FALSE}
+
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}
+
+\PYG{+w}{    }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Frame Conditions}
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}
+
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}
+
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}
+\PYG{+w}{    }\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k}{run}\PYG{+w}{ }\PYG{n}{verifyTrip}
+
+\PYG{k}{pred}\PYG{+w}{ }\PYG{n}{publishTrip}\PYG{o}{[}\PYG{n}{u}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{t}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{FALSE}
+
+\PYG{+w}{    }\PYG{o}{(}\PYG{n}{t}\PYG{o}{.}\PYG{n}{mode}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{AUTOMATED}\PYG{o}{)}\PYG{+w}{ }\PYG{o+ow}{implies}\PYG{+w}{ }\PYG{o}{(}\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}\PYG{o}{)}
+
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isPublished}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{TRUE}
+
+\PYG{+w}{    }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Frame Conditions}
+
+\PYG{+w}{    }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{o}{.}\PYG{n}{isVerified}
+
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}
+
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}
+\PYG{+w}{    }\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k}{run}\PYG{+w}{ }\PYG{n}{publishTrip}
+
+\PYG{k}{pred}\PYG{+w}{ }\PYG{n}{deleteTrip}\PYG{o}{[}\PYG{n}{u}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{t}\PYG{+w}{ }\PYG{o+ow}{in}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}
+
+\PYG{+w}{    }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u}\PYG{o}{.}\PYG{n}{records}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{t}
+
+\PYG{+w}{    }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} Frame Conditions}
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{u}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{u1}\PYG{o}{.}\PYG{n}{records}
+
+\PYG{+w}{    }\PYG{k}{all}\PYG{+w}{ }\PYG{n}{t1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isPublished}
+\PYG{+w}{        }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}\PYG{o}{\PYGZsq{}}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{.}\PYG{n}{isVerified}
+\PYG{+w}{    }\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k}{run}\PYG{+w}{ }\PYG{n}{deleteTrip}
+
+
+\PYG{k}{pred}\PYG{+w}{ }\PYG{n}{showScenario}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{some}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{n}{u1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{u2}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{RegisteredUser}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{disj}\PYG{+w}{ }\PYG{n}{t1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t2}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Trip}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{o}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{recordTrip}\PYG{o}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{AUTOMATED}\PYG{o}{]}
+\PYG{+w}{        }\PYG{k}{after}\PYG{+w}{ }\PYG{n}{verifyTrip}\PYG{o}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{]}
+\PYG{+w}{        }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{after}\PYG{+w}{ }\PYG{n}{publishTrip}\PYG{o}{[}\PYG{n}{u1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t1}\PYG{o}{]}
+\PYG{+w}{        }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{after}\PYG{+w}{ }\PYG{n}{recordTrip}\PYG{o}{[}\PYG{n}{u2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{MANUAL}\PYG{o}{]}
+\PYG{+w}{        }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{after}\PYG{+w}{ }\PYG{k}{after}\PYG{+w}{ }\PYG{n}{deleteTrip}\PYG{o}{[}\PYG{n}{u2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{t2}\PYG{o}{]}
+\PYG{+w}{    }\PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+
+\PYG{k}{run}\PYG{+w}{ }\PYG{n}{showScenario}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{l+m+mi}{5}\PYG{+w}{ }\PYG{k}{but}\PYG{+w}{ }\PYG{l+m+mi}{3}\PYG{+w}{ }\PYG{k+kt}{Int}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{+w}{ }\PYG{n}{TimeStamp}
+\end{MintedVerbatim}

@@ -1,16 +1,17 @@
-\contentsline {table}{\numberline {2}{\ignorespaces Use Case UC1: Unregistered user signs up}}{14}{table.caption.13}%
-\contentsline {table}{\numberline {4}{\ignorespaces Use Case UC2: User logs in the account}}{16}{table.caption.16}%
-\contentsline {table}{\numberline {6}{\ignorespaces Use Case UC3: User manually adds bike trip}}{18}{table.caption.19}%
-\contentsline {table}{\numberline {8}{\ignorespaces Use Case UC4: User automatically records bike trip}}{20}{table.caption.22}%
-\contentsline {table}{\numberline {9}{\ignorespaces Use Case UC5: User views his bike trip history}}{22}{table.caption.25}%
-\contentsline {table}{\numberline {10}{\ignorespaces Use Case UC6: User views his bike trip statistics}}{23}{table.caption.28}%
-\contentsline {table}{\numberline {11}{\ignorespaces Use Case UC7: User publishes recorded trip}}{24}{table.caption.31}%
-\contentsline {table}{\numberline {12}{\ignorespaces Use Case UC8: User modifies one of his saved trips}}{25}{table.caption.34}%
-\contentsline {table}{\numberline {13}{\ignorespaces Use Case UC9: User views possible bike routes on map}}{27}{table.caption.37}%
-\contentsline {table}{\numberline {14}{\ignorespaces Use Case UC10: User views additional information about selected path on map}}{28}{table.caption.40}%
-\contentsline {table}{\numberline {15}{\ignorespaces Use Case UC11: User start navigation on selected bike path}}{28}{table.caption.43}%
-\contentsline {table}{\numberline {16}{\ignorespaces Use Case UC12: User modifies profile data}}{29}{table.caption.46}%
-\contentsline {table}{\numberline {17}{\ignorespaces Use Case UC13: User logs out the account}}{31}{table.caption.49}%
-\contentsline {table}{\numberline {18}{\ignorespaces Use Case UC14: User deletes the account}}{32}{table.caption.52}%
-\contentsline {table}{\numberline {19}{\ignorespaces Use Case UC15: User recovers password of the account}}{33}{table.caption.55}%
-\contentsline {table}{\numberline {20}{\ignorespaces Use Case UC16: User deletes a recorded trip}}{35}{table.caption.58}%
+\contentsline {table}{\numberline {1}{\ignorespaces Definitions, Acronyms and Abbreviations}}{8}{table.caption.6}%
+\contentsline {table}{\numberline {4}{\ignorespaces Use Case UC1: Unregistered user signs up}}{22}{table.caption.20}%
+\contentsline {table}{\numberline {6}{\ignorespaces Use Case UC2: User logs in the account}}{24}{table.caption.23}%
+\contentsline {table}{\numberline {8}{\ignorespaces Use Case UC3: User manually adds bike trip}}{26}{table.caption.26}%
+\contentsline {table}{\numberline {10}{\ignorespaces Use Case UC4: User automatically records bike trip}}{28}{table.caption.29}%
+\contentsline {table}{\numberline {11}{\ignorespaces Use Case UC5: User views his bike trip history}}{30}{table.caption.32}%
+\contentsline {table}{\numberline {12}{\ignorespaces Use Case UC6: User views his bike trip statistics}}{31}{table.caption.35}%
+\contentsline {table}{\numberline {13}{\ignorespaces Use Case UC7: User publishes recorded trip}}{32}{table.caption.38}%
+\contentsline {table}{\numberline {14}{\ignorespaces Use Case UC8: User modifies one of his saved trips}}{33}{table.caption.41}%
+\contentsline {table}{\numberline {15}{\ignorespaces Use Case UC9: User views possible bike routes on map}}{35}{table.caption.44}%
+\contentsline {table}{\numberline {16}{\ignorespaces Use Case UC10: User views additional information about selected path on map}}{36}{table.caption.47}%
+\contentsline {table}{\numberline {17}{\ignorespaces Use Case UC11: User start navigation on selected bike path}}{36}{table.caption.50}%
+\contentsline {table}{\numberline {18}{\ignorespaces Use Case UC12: User modifies profile data}}{37}{table.caption.53}%
+\contentsline {table}{\numberline {19}{\ignorespaces Use Case UC13: User logs out the account}}{39}{table.caption.56}%
+\contentsline {table}{\numberline {20}{\ignorespaces Use Case UC14: User deletes the account}}{40}{table.caption.59}%
+\contentsline {table}{\numberline {21}{\ignorespaces Use Case UC15: User recovers password of the account}}{41}{table.caption.62}%
+\contentsline {table}{\numberline {22}{\ignorespaces Use Case UC16: User deletes a recorded trip}}{43}{table.caption.65}%
