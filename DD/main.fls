@@ -433,6 +433,11 @@ INPUT ./Files/effort.tex
 INPUT ./Files/effort.tex
 INPUT ./Files/effort.tex
 INPUT Files/effort.tex
+INPUT ./Files/references.tex
+INPUT ./Files/references.tex
+INPUT ./Files/references.tex
+INPUT ./Files/references.tex
+INPUT Files/references.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

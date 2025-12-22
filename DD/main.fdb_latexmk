@@ -1,21 +1,14 @@
 # Fdb version 4
-["bibtex main"] 0 "main.aux" "main.bbl" "main" 1766157721.58473 0
-  "c:/texlive/2025/texmf-dist/bibtex/bst/base/plain.bst" 1763475784 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 0 -1 0 "pdflatex"
-  "main.bib" 0 -1 0 ""
-  (generated)
-  "main.bbl"
-  "main.blg"
-  (rewritten before read)
-["pdflatex"] 1766157717.3807 "c:/Users/angel/Documents/CantoliBedini/DD/main.tex" "main.pdf" "main" 1766157721.58526 0
+["pdflatex"] 1766159806.11093 "c:/Users/angel/Documents/CantoliBedini/DD/main.tex" "main.pdf" "main" 1766159809.08212 0
   "Files/architecture.tex" 1766156902 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Files/effort.tex" 1766156931 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Files/implementation.tex" 1766156944 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Files/introduction.tex" 1766157716 1047 0e12944d12ec5eb049a3b3b670256465 ""
+  "Files/introduction.tex" 1766157864 1171 9b5140a529510c9a516bae6411291849 ""
+  "Files/references.tex" 1766159773 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Files/traceability.tex" 1766156923 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Files/user_interface.tex" 1766156914 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Images/PolimiLogo.png" 1764256549 9009 4893d5287f3cc4ab60041ba7e8daf363 ""
-  "c:/Users/angel/Documents/CantoliBedini/DD/main.tex" 1766157019 7251 656565c9fd96eae191f6aa22497bf28d ""
+  "c:/Users/angel/Documents/CantoliBedini/DD/main.tex" 1766159802 7507 dabdddcc42715cedafaa224d344b247b ""
   "c:/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc" 1763477405 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "c:/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1763477858 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2025/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1763485352 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -213,13 +206,12 @@
   "c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1763489505 5587484 30eee748fa419a911c40b0c750dd21ba ""
   "c:/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1763490100 3635917 f544f499f6225a3391ab8de75fbf0d06 ""
   "c:/texlive/2025/texmf.cnf" 1763489459 713 e69b156964470283e0530f5060668171 ""
-  "main.aux" 1766157720 2018 d251c24a3e8d056d9d532876f9ea5b67 "pdflatex"
-  "main.bbl" 0 -1 0 "bibtex main"
-  "main.lof" 1766157718 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.lot" 1766157720 115 99f3f79dc64b6fd7d9d700bd603854f4 "pdflatex"
-  "main.out" 1766157720 1501 f92bc7c9d558fd90ed7e2617e0f8493d "pdflatex"
-  "main.tex" 1766157019 7251 656565c9fd96eae191f6aa22497bf28d ""
-  "main.toc" 1766157720 789 264d66fa24bd6f84853422d535c39712 "pdflatex"
+  "main.aux" 1766159808 2624 d8cde7fc9fafa56f0429dcbf238cbd3f "pdflatex"
+  "main.lof" 1766159807 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.lot" 1766159808 115 99f3f79dc64b6fd7d9d700bd603854f4 "pdflatex"
+  "main.out" 1766159808 2146 f5a802709733ee1a9c7cbaf38410a8be "pdflatex"
+  "main.tex" 1766159802 7507 dabdddcc42715cedafaa224d344b247b ""
+  "main.toc" 1766159808 1127 64554111b2f2e4fb9d3ebae6d7ce2bae "pdflatex"
   "util/abbrev.tex" 1764256549 475 6eaaf442846fbee20367b2cd35d459f2 ""
   "util/highlight.tex" 1764256549 2286 49d997e242e7a3bed61623c429885d65 ""
   (generated)

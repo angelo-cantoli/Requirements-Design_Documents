@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  19 DEC 2025 16:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  19 DEC 2025 16:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -910,31 +910,40 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [10
 
-]
-No file main.bbl.
-runsystem(latexminted cleantemp  --timestamp 20251219162157 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+] (./Files/references.tex)
 
-(./main.aux)
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[11
+
+]
+runsystem(latexminted cleantemp  --timestamp 20251219165646 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+
+ (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F92BC7C9D558FD90ED7E2617E0F8493D;1501.
+(rerunfilecheck)             Checksum: F5A802709733EE1A9C7CBAF38410A8BE;2146.
  ) 
 Here is how much of TeX's memory you used:
- 29137 strings out of 467538
- 575754 string characters out of 5423724
- 1065956 words of memory out of 5000000
- 57504 multiletter control sequences out of 15000+600000
+ 29153 strings out of 467538
+ 576054 string characters out of 5423724
+ 1067066 words of memory out of 5000000
+ 57512 multiletter control sequences out of 15000+600000
  655370 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,20n,97p,511b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (10 pages, 49806 bytes).
+Output written on main.pdf (11 pages, 50719 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 138 words of extra memory for PDF output out of 10000 (max. 10000000)
 
