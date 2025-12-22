@@ -11,5 +11,8 @@
 \contentsline {section}{\numberline {3}User Interface Design}{7}{section.3}%
 \contentsline {section}{\numberline {4}Requirements Traceability}{8}{section.4}%
 \contentsline {section}{\numberline {5}Implementation, Integration and Test Plan}{9}{section.5}%
-\contentsline {section}{\numberline {6}Effort Spent}{10}{section.6}%
-\contentsline {section}{\numberline {7}References}{11}{section.7}%
+\contentsline {subsection}{\numberline {5.1}Implementation plan}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Integration plan}{9}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Test plan}{9}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Effort Spent}{11}{section.6}%
+\contentsline {section}{\numberline {7}References}{12}{section.7}%
