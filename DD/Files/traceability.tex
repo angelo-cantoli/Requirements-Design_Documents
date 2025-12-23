@@ -1,0 +1,125 @@
+The following table lists the traceability between the identified requirements and the corresponding components and modules implemented in the system.
+
+\enlargethispage{2cm}
+
+\begin{longtable}{|p{3cm}|p{13cm}|}
+    
+    \caption[]{Requirements traceability} \\
+    \hline
+    \textbf{Component} & \textbf{Requirements} \\ \hline
+    \endhead
+   Mobile \newline Application & 
+   R1: System accepts account registration data \newline
+   R5: System allows users to login to their account by authenticating via email (or username) and password \newline
+   R6: System allows users to logout of their account \newline
+   R7: System allows users to modify their account information (username and personal data) \newline
+   R8: System allows users to modify/recover their password via email verification \newline
+   R9: System allows users to delete their account, with all the associated data \newline
+   R10: System allows users to start automated trip recording \newline
+   R11: System requests necessary sensor and GPS permissions when automated recording is started \newline
+   R14: System collects GPS coordinates during automated trip recording \newline
+   R15: System reconstructs traveled path from collected GPS coordinates \newline
+   R16: System collects data from mobile device’s accelerometer and gyroscope during automated trip recording \newline
+   R18: System allows users to manually stop automated trip recording \newline
+   R19: System allows users to manually record trips by inserting starting and ending locations, names of roads in traversal order, start and end times \newline
+   R20: System allows users to specify road status (optimal, medium, sufficient, requires maintenance) during manual recording \newline
+   R21: System allows users to specify obstacle locations during manual recording \newline
+   R32: System displays a list of user’s recorded trips showing name, date, start and end locations \newline
+   R33: System allows users to view detailed trip data for any recorded trip, including route map, statistics and weather data \newline
+   R34: System allows users to manually edit trip data for any of their recorded trips \newline
+   R35: System allows users to delete any of their recorded trips \newline
+   R37: System allows users to make published trips private again \newline
+   R38: System allows registered users to publish their recorded trips, making them publicly available \newline
+   R39: System requires the user to correct and confirm data before publishing, if it was acquired automatically \newline
+   R40: System allows users to add/remove obstacle markers during data correction \newline
+   R41: System allows users to modify road status during data correction \newline
+   R42: System allows all users to view published bike paths between specified start and end points \newline
+   R46: System displays all identified paths on a map, with the highest scoring path highlighted and the others with reduced opacity \newline
+   R49: System allows users to select a displayed path \newline
+   R51: System allows users to export selected path to compatible third-party navigation applications \\ \hline
+   API Gateaway &
+   R1: System accepts account registration data \newline
+   R5: System allows users to login to their account \newline
+   R6: System allows users to logout of their account \newline
+   R7: System allows users to modify their account information \newline
+   R8: System allows users to modify/recover their password \newline
+   R9: System allows users to delete their account, with all the associated data \newline
+   R32: System displays a list of user’s recorded trips \newline
+   R33: System allows users to view detailed trip data \newline
+   R34: System allows users to manually edit trip data \newline
+   R35: System allows users to delete any of their recorded trips \newline
+   R37: System allows users to make published trips private again \newline
+   R38: System allows registered users to publish their recorded trips \newline
+   R42: System allows all users to view published bike paths \newline
+   R46: System displays all identified paths on a map \newline
+   R49: System allows users to select a displayed path \newline
+   R51: System allows users to export selected path to compatible third-party applications \\ \hline
+   Service Discovery & 
+   Enables communication bewteen components for \textbf{all requirements} \\ \hline
+   User Service & 
+   R1: System accepts account registration data \newline
+   R2: System rejects account registrations with duplicate emails or usernames \newline
+   R3: System sends a verification email with an OTP to the email address provided during registration \newline
+   R4: System must verify OTP code before confirming registration \newline
+   R5: System allows users to login to their account by authenticating via email (or username) and password \newline
+   R6: System allows users to logout of their account \newline
+   R7: System allows users to modify their account information (username and personal data) \newline
+   R8: System allows users to modify/recover their password via email verification \newline
+   R9: System allows users to delete their account, with all the associated data \\ \hline
+   Trip Service & 
+   R12: System begins automated path and sensor tracking, after recording initiation, only when user has started biking \newline
+   R19: System allows users to manually record trips by inserting starting and ending locations, names of roads in traversal order, start and end times \newline
+   R22: System persistently stores recorded trips \newline
+   R23: System ensures only author of recorded trips can access unpublished trip records \newline
+   R25: System calculates statistics immediately after trip is saved \newline
+   R32: System displays a list of user’s recorded trips showing name, date, start and end locations \newline
+   R33: System allows users to view detailed trip data for any recorded trip, including route map, statistics and weather data \newline
+   R34: System allows users to manually edit trip data for any of their recorded trips \newline
+   R35: System allows users to delete any of their recorded trips \newline
+   R36: System propagates modifications and deletions of trips to their published versions, if present \newline
+   R37: System allows users to make published trips private again \newline
+   R38: System allows registered users to publish their recorded trips, making them publicly available \\ \hline
+   Data Processing Service & 
+   R13: System algorithmically detects if a user has started biking from speed data \newline
+   R15: System reconstructs traveled path from collected GPS coordinates \newline
+   R17: System algorithmically interprets collected sensor data to detect potential obstacles along the path \newline
+   R24: System automatically calculates statistics for each recorded trip (distance, average speed, duration, elevation, average slope) \newline
+   R26: System calculates aggregate statistics across all of user’s recorded trips \newline
+   R27: System recomputes aggregate statistics upon modification of user’s trip record (add/delete/edit trip) \newline
+   R29: System infers road status from detected obstacle density and movement pattern analysis when trip data is recorded automatically \newline
+   R30: System queries an external meteorological service for weather data to enrich trip data after completion \\ \hline
+   Path Service & 
+   R38: System allows registered users to publish their recorded trips, making them publicly available \newline
+   R42: System allows all users to view published bike paths between specified start and end points \newline
+   R43: System identifies all published bike paths that connect specified start and end points \newline
+   R44: System notifies user when no published paths exist between the specified points \newline
+   R45: System calculates a score for each identified bike path based on road status, route effectiveness (distance and directness in reaching destination), amount of obstacles, path difficulty (slope) \newline
+   R47: System displays score values for each path \newline
+   R48: System initially displays a limited amount of the identified paths, providing the option to view all paths \newline
+   R49: System allows users to select a displayed path \newline
+   R50: System allows users to view additional information about selected path (status, obstacles) \\ \hline
+   Message Broker & 
+   R24: System automatically calculates statistics for each recorded trip (distance, average speed, duration, elevation, average slope) \newline
+   R30: System queries an external meteorological service for weather data to enrich trip data after completion \newline
+   R36: System propagates modifications and deletions of trips to their published versions, if present \newline
+   R38: System allows registered users to publish their recorded trips, making them publicly available \\ \hline
+   Databases \newline \& DBMS & 
+   R2: System rejects account registrations with duplicate emails or usernames \newline
+   R9: System allows users to delete their account, with all the associated data \newline
+   R22: System persistently stores recorded trips \newline
+   R23: System ensures only author of recorded trips can access unpublished trip records \newline
+   R28: System persistently stores computed statistics with corresponding trip data \newline
+   R31: System stores a notice in trip data when weather data is unavailable \newline
+   R35: System allows users to delete any of their recorded trips \newline
+   R36: System propagates modifications and deletions of trips to their published versions, if present \newline
+   R43: System identifies all published bike paths that connect specified start and end points \\ \hline
+   Map Provider & 
+   R33: System allows users to view detailed trip data for any recorded trip, including route map, statistics and weather data \newline
+   R42: System allows all users to view published bike paths between specified start and end points \newline
+   R46: System displays all identified paths on a map, with the highest scoring path highlighted and the others with reduced opacity \newline
+   R48: System initially displays a limited amount of the identified paths, providing the option to view all paths \\ \hline
+   Weather Provider & 
+   R30: System queries an external meteorological service for weather data to enrich trip data after completion \newline
+   R33: System allows users to view detailed trip data for any recorded trip, including route map, statistics and weather data \\ \hline
+
+\end{longtable}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  22 DEC 2025 10:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.11.18)  23 DEC 2025 19:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -870,7 +870,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [6
 
-] (./Files/user_interface.tex)
+] (./Files/user_interface.tex
+<Images/4-UI.png, id=170, 204.01219pt x 395.22656pt>
+File: Images/4-UI.png Graphic file (type png)
+<use Images/4-UI.png>
+Package pdftex.def Info: Images/4-UI.png  used on input line 27.
+(pdftex.def)             Requested size: 136.57462pt x 264.59537pt.
+<Images/5-UI.png, id=172, 188.20313pt x 363.60844pt>
+File: Images/5-UI.png Graphic file (type png)
+<use Images/5-UI.png>
+Package pdftex.def Info: Images/5-UI.png  used on input line 34.
+(pdftex.def)             Requested size: 136.57462pt x 263.87845pt.
+<Images/6-UI.png, id=173, 194.97844pt x 386.94562pt>
+File: Images/6-UI.png Graphic file (type png)
+<use Images/6-UI.png>
+Package pdftex.def Info: Images/6-UI.png  used on input line 41.
+(pdftex.def)             Requested size: 136.57462pt x 271.04903pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -880,7 +896,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7
 
-] (./Files/traceability.tex)
+]
+<Images/7-UI.png, id=183, 203.25937pt x 462.97969pt>
+File: Images/7-UI.png Graphic file (type png)
+<use Images/7-UI.png>
+Package pdftex.def Info: Images/7-UI.png  used on input line 57.
+(pdftex.def)             Requested size: 159.33821pt x 362.9524pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -888,9 +910,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[8
+[8 <./Images/4-UI.png> <./Images/5-UI.png> <./Images/6-UI.png>]
+<Images/8-UI.png, id=192, 201.75375pt x 462.22687pt>
+File: Images/8-UI.png Graphic file (type png)
+<use Images/8-UI.png>
+Package pdftex.def Info: Images/8-UI.png  used on input line 74.
+(pdftex.def)             Requested size: 159.33821pt x 365.05649pt.
+<Images/9-UI.png, id=193, 203.25937pt x 465.99094pt>
+File: Images/9-UI.png Graphic file (type png)
+<use Images/9-UI.png>
+Package pdftex.def Info: Images/9-UI.png  used on input line 81.
+(pdftex.def)             Requested size: 159.33821pt x 365.31306pt.
 
-] (./Files/implementation.tex
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -898,7 +929,116 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[9
+[9 <./Images/7-UI.png>]
+<Images/10-UI.png, id=201, 203.25937pt x 463.7325pt>
+File: Images/10-UI.png Graphic file (type png)
+<use Images/10-UI.png>
+Package pdftex.def Info: Images/10-UI.png  used on input line 95.
+(pdftex.def)             Requested size: 159.33821pt x 363.54256pt.
+<Images/11-UI.png, id=202, 207.77625pt x 464.4853pt>
+File: Images/11-UI.png Graphic file (type png)
+<use Images/11-UI.png>
+Package pdftex.def Info: Images/11-UI.png  used on input line 102.
+(pdftex.def)             Requested size: 159.33821pt x 356.21603pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[10 <./Images/8-UI.png> <./Images/9-UI.png>]
+<Images/12-UI.png, id=211, 204.765pt x 468.24937pt>
+File: Images/12-UI.png Graphic file (type png)
+<use Images/12-UI.png>
+Package pdftex.def Info: Images/12-UI.png  used on input line 114.
+(pdftex.def)             Requested size: 159.33821pt x 364.38992pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[11 <./Images/10-UI.png> <./Images/11-UI.png>])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[12 <./Images/12-UI.png>] (./Files/traceability.tex
+Overfull \hbox (25.19995pt too wide) in alignment at lines 5--10
+ [] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--82
+[]|\T1/ptm/m/n/10.95 Data Pro-cess-ing
+ []
+
+
+Overfull \hbox (25.19995pt too wide) in alignment at lines 10--125
+ [] [] 
+ []
+
+./Files/traceability.tex:125: ignored error: Infinite glue shrinkage found in box being split
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[13
+
+]
+./Files/traceability.tex:125: ignored error: Infinite glue shrinkage found in box being split
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[14]
+./Files/traceability.tex:125: ignored error: Infinite glue shrinkage found in box being split
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[15]
+./Files/traceability.tex:125: ignored error: Infinite glue shrinkage found in box being split
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[16])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[17] (./Files/implementation.tex
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[18
 
 ])
 
@@ -908,7 +1048,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[10] (./Files/effort.tex)
+[19] (./Files/effort.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -916,7 +1056,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[11
+[20
 
 ] (./Files/references.tex)
 
@@ -926,10 +1066,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[12
+[21
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251222102430 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted cleantemp  --timestamp 20251223194915 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./main.aux)
  ***********
@@ -937,21 +1077,21 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-11-06>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: ECF5F4470D8CFE3BBFC169D983480974;2549.
+(rerunfilecheck)             Checksum: 9BD03BC13D30E3C7F4B83B40D365B90A;3213.
  ) 
 Here is how much of TeX's memory you used:
- 29164 strings out of 467538
- 576245 string characters out of 5423724
- 1069051 words of memory out of 5000000
- 57519 multiletter control sequences out of 15000+600000
+ 29273 strings out of 467538
+ 578299 string characters out of 5423724
+ 1090466 words of memory out of 5000000
+ 57607 multiletter control sequences out of 15000+600000
  655370 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,20n,97p,511b,673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (12 pages, 56044 bytes).
+Output written on main.pdf (21 pages, 315786 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 162 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 291 PDF objects out of 1000 (max. 8388607)
+ 241 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 247 words of extra memory for PDF output out of 10000 (max. 10000000)
 
