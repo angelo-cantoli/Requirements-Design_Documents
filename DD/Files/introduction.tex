@@ -5,6 +5,12 @@ The application is intended for smartphone, where it can make use of GPS and sen
 
 \subsection{Scope}
 
+The scope of this Design Document (DD) is to define the technical architecture and the detailed design of the Best Bike Paths (BBP) system. 
+
+It translates the requirements specified in the RASD into a modular, microservice-based structure, detailing the components, their interfaces, and the user interface that represents the implementation of the system. 
+
+It represents the structure to respect in development to ensure that the system is scalable, maintainable, and that it correctly provides a reliable experience for users.
+
 \subsection{Definitions, Acronyms, Abbreviations}
 
 \begin{table}[H]
@@ -25,4 +31,24 @@ The application is intended for smartphone, where it can make use of GPS and sen
 
 \subsection{Reference Documents}
 
+\begin{itemize}
+   \item Requirements analysis and specification document (RASD) of Best Bike Paths application
+   \item Lecture slides and notes from the course Software Engineering 2 2025/2026
+\end{itemize}
+
 \subsection{Document Structure}
+
+This document is organized into five main sections, each covering a specific aspect of the BBP (Best Bike Paths) system design:
+
+\begin{itemize}
+    \item \textbf{Section 1 - Introduction}: This section provides an overview of the document, defining its purpose and scope. 
+    It also includes a list of definitions, acronyms, and abbreviations used throughout the text, along with references to related documents.
+    \item \textbf{Section 2 - Architectural Design}: This section describes the system's high-level architecture. It details the microservice-based approach through a Component View and a Deployment View. 
+    Furthermore, it includes a Runtime View where sequence diagrams illustrate how various use cases are executed across the components, and a dedicated subsection for Component Interfaces.
+    \item \textbf{Section 3 - User Interface Design}: This section presents the design of the mobile application's interface. 
+    It explains the layout and navigation flow, highlighting how the UI has been structured to satisfy the specific needs and goals of the end-users.
+    \item \textbf{Section 4 - Requirements Traceability}: This section provides a mapping between the architectural components defined in this document and the functional requirements previously identified in the RASD (Requirements Analysis and Specification Document), 
+    ensuring every requirement is addressed by the design.
+    \item \textbf{Section 5 - Implementation, Integration, and Test Plan}: The final section outlines the development strategy. It identifies the order in which subcomponents will be implemented and describes the plan for integrating and testing them to ensure system reliability.
+    \item \textbf{Section 6 - Effort Spent}: This section provides an overview of the effort spent by each team member during the creation of this document.
+\end{itemize}
