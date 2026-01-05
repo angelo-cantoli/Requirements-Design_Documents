@@ -60,7 +60,7 @@ a distinct, independent database instance. Specifically there will be:
     simplify the handling of this operation. Is accessed exclusively by the User Service.
     \item \textbf{Trip DB: } will store retrieved sensor data and trip summaries. Is accessed exclusively
     by the Trip Service.
-    \item \textbf{Path DB} a geospatial database (e.g. PostGIS). Will store path geometries.\\
+    \item \textbf{Path DB: } a geospatial database (e.g. PostGIS). Will store path geometries.\\
 \end{itemize}
 \textbf{External Services}
 \begin{itemize}
@@ -94,4 +94,36 @@ The message broker (e.g. Apache Kafka) facilitates the communication between ser
 \newline
 \textbf{Managed Database per Service}\\
 The deployment will include a Managed Database Service (e.g. AWS RDS), which will provide distinct database instances for each microservice. The path service will require a database instance with geospatial extensions (e.g. PostGIS).
-This enforces the decoupling required by the microservices architecture, ensuring that services cannot access private data of other services. Furthermore, the single database instances can be specifically optimized for each services’ needs.
+This enforces the loose coupling required by the microservices architecture, ensuring that services cannot access private data of other services. Furthermore, the single database instances can be specifically optimized for each services’ needs.
+
+\subsection{Runtime View}
+\subsubsection{Unregistered User Signs Up}
+When a user registers a new account through the BBP mobile application, it will send the inserted credentials to the API gateway via a POST request. The gateway will forward the request to the User Service, which will handle both input validation and password hashing; the service will check if there are any existing accounts registered with the new user’s email, in which case an error will be returned, otherwise the service will hash the password and store the credentials in the User DB.
+\subsubsection{User Logs in the Account}
+When a user logs into their account using the BBP application, it will send the inserted credentials to the API gateway via a POST request. The gateway will forward the request to the User Service, which will verify them by querying the User DB. In case of valid credentials, the service will generate a signed JWT (JSON Web Token), which will be stored in the client and attached to all subsequent API requests where authentication is required.
+\subsubsection{User Manually Adds Bike Trip}
+When a user manually inputs a trip, the mobile app sends all inserted trip data to the API gateway via a POST request, which is then forwarded to the Trip Service. The service will then store the new trip in the Trip DB, and publish an event to the Message Broker to ensure that the Data Processing Service is informed of the insertion of a new trip, and can update the user’s aggregate statistics asynchronously, without blocking the response to the user.
+\subsubsection{User Automatically Records Bike Trip}
+When a user starts an automatic recording of a trip, the BBP application will send a POST request to the API gateway, which will then forward the request to the Trip Service. The gateway will then notify the app that the system is ready to start the recording process. The application will then collect GPS and sensor data, and periodically send batches of data to the gateway, which are then forwarded to the Trip Service. The service will then publish events to the Message Broker, so that the Data Processing Service may asynchronously process the data while the mobile app immediately receives a response. This ensures that the data processing does not interfere with the recording process. Once the user terminates the recording, the API gateway is notified and the request is forwarded once more to the Trip Service, which publishes a ‘TripEnded’ event to the Message Broker.
+\subsubsection{User Views their Bike Trip History}
+When a user views their bike trip history, the mobile application sends a GET request to the API Gateway. The gateway verifies the JWT signature, ensuring the user is properly authenticated, before forwarding the request to the Trip Service, which retrieves data from the Trip DB, which is then sent back to the application.
+\subsubsection{User views their Bike Trip Statistics}
+When a user views their aggregate statistics, the mobile application sends a GET request to the API Gateway. The gateway verifies the JWT signature, ensuring the user is properly authenticated, before forwarding the request to the User Service, which retrieves data from the User DB, which is then sent back to the application. The statistics data is computed by the Data Processing Service asynchronously each time a trip is added, modified or removed, and stored in the User DB, so as to not perform heavy computations by querying the Trip Service and Trip DB each time a user views their aggregate statistics. 
+\subsubsection{User Publishes Recorded Trip}
+When a user publishes one of their trips, the mobile application sends a PATCH request to the API gateway, modifying the published flag of the trip. The gateway verifies the JWT signature, ensuring the user is properly authenticated, before forwarding the request to the Trip Service, which validates the request and performs the change by querying the Trip DB.
+\subsubsection{User Modifies one of their Saved Trips}
+When a user modifies one of their saved trips, the mobile application sends a PATCH request to the API gateway, containing the edited data. The gateway verifies the JWT signature, ensuring the user is properly authenticated, before forwarding the request to the Trip Service, which validates the request and performs the change by querying the Trip DB.
+\subsubsection{User Views Possible Bike Routes On Map}
+When a user goes to the path finding section of the mobile application, and inserts a starting and ending destination, the app sends a GET request to the API gateway, which then forwards it to the Path Service (no authentication is required for this functionality, so the gateway does not verify the JWT signature). The service then queries the Path DB to find all possible routes between the two points, calculates the scores for each route, and sends them back to the mobile application, which renders them on the map highlighted based on their score.
+\subsubsection{User Views Additional Information about Selected Path on Map}
+When a user selects a specific path segment on the mobile app, to view additional details about it, the application sends a GET request to the API gateway, which then forwards it to the Path Service (no authentication is required for this functionality, so the gateway does not verify the JWT signature). The service retrieves the data from the Path DB, and returns it to the mobile app.
+\subsubsection{User Starts Navigation on Selected Bike Path}
+When a user starts navigation on one of the identified paths, the mobile app sends a GET request to the API Gateway, which forwards the request to the Path Service. The service retrieves the coordinates of the desired path from the Path DB, and sends them back to the application, which will then launch a third-party navigation application with the selected route.
+\subsubsection{User Modifies Profile Data}
+When a user modifies their profile data, the mobile application sends a PATCH request to the API gateway, with the relevant new data. The gateway verifies the JWT signature, ensuring the user is properly authenticated, then forwards the request to the User Service, which validates the data and performs the necessary updates to the User DB.
+\subsubsection{User Logs Out of the Account}
+When a user wishes to log out of their account, the mobile application sends a POST request to the API gateway, which verifies the JWT signature, ensuring the user is properly authenticated, and then forwards the request to the User Service. The service proceeds to add the token id to a revocation list, ensuring that the user is no longer authenticated, and sends confirmation back to the mobile app, which proceeds to delete its JWT from storage.
+\subsubsection{User Deletes Account}
+When a user deletes their account, the mobile application sends a DELETE request to the API gateway, which verifies the JWT signature, ensuring the user is properly authenticated, and then forwards the request to the User Service. The service proceeds to delete all data pertinent to the user from the User DB, and then publishes a ‘UserDeleted’ event to the Message Broker; this ensures that other services, such as the Trip Service, can asynchronously delete or anonymize any data relative to the user from their DB.
+\subsubsection{User Recovers Password of the Account}
+When a user wants to recover their password, the mobile application sends a POST request to the API gateway, which forwards the request to the User Service. The service generates a random token and saves it in the User DB, then proceeds to send an email to the address provided by the user, containing the token code. If the user then inserts the code, along with a new password, the app will once again send a POST request to the API gateway, which is forwarded to the User Service. The service will validate the provided token, and in case of success hash and store the new password.
