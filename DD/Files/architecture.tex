@@ -72,3 +72,26 @@ a distinct, independent database instance. Specifically there will be:
 
 \subsubsection{Component Diagram}
 
+\subsection{Deployment View}
+The deployment of the BBP system will follow a three-tiered client-server architecture, in line with the microservice architecture style described previously. The system is designed to be hosted in a cloud computing environment (e.g. AWS), which aids in ensuring high availability and scalability, which are critical aspects of the system.
+The system is divided into the following physical tiers:
+\begin{itemize}
+    \item \textbf{Client Tier:} consists of the users’ mobile devices. These host the BBP mobile application, which is responsible for providing the user interface and collecting all necessary GPS and sensor data.
+    \item \textbf{Application Tier:} consists of hosting the application logic within a containerized environment (e.g. kubernetes). Includes the API gateway, the service discovery component, the message broker component, and all the individual microservices.
+    \item \textbf{Data Tier:} consists of the various managed databases. To adhere to the microservice architecture style, distinct databases are used for the User, Trip and Path services.
+\end{itemize}
+
+\subsubsection{Deployment Diagram}
+\subsubsection{Deployment Description}
+\textbf{Containerized Cloud Environment}\\
+All the microservices that compose the backend of the application will be deployed in a containerized environment (e.g. Kubernetes), hosted on a cloud provider (e.g. AWS). Each microservice will be packaged as an independent container; this is crucial to ensure scalability (in case of fluctuating loads, multiple instances of a service can be instantiated easily to handle a heavier load, independently from other services with a smaller amount of work), isolation (if a service crashes, the other services will be unaffected). Furthermore, containers ensure that software will run exactly the same way in development, testing and deployment, eliminating consistency issues.\\
+\newline
+\textbf{API Gateway}\\
+The API gateway component (e.g. Spring Cloud) acts as the single entry point between the public internet and the system. The mobile app can only communicate with the backend through this gateway: all requests are then routed by the gateway to the appropriate internal microservice. This prevents exposing the microservices directly to anything outside of the system, which is crucial for security concerns, and ensures that the mobile application sees the system as a single entity, moving the complexity of service location to the backend.\\
+\newline
+\textbf{Message Broker}\\
+The message broker (e.g. Apache Kafka) facilitates the communication between services, specifically between the Trip Service and the Data Processing Service. Since the message broker allows asynchronous communication, the Trip Service can send data through it to the Data Processing Service, while sending a confirmation to the corresponding user request. This ensures both that the user has a smoother experience while utilizing the application, since the system hides the computation time by immediately sending acknowledgment, and that in case of a great load (e.g. a lot of users finishing a trip simultaneously), the message broker can act as a buffer while the jobs are processed, so as to not crash the system.\\
+\newline
+\textbf{Managed Database per Service}\\
+The deployment will include a Managed Database Service (e.g. AWS RDS), which will provide distinct database instances for each microservice. The path service will require a database instance with geospatial extensions (e.g. PostGIS).
+This enforces the decoupling required by the microservices architecture, ensuring that services cannot access private data of other services. Furthermore, the single database instances can be specifically optimized for each services’ needs.
