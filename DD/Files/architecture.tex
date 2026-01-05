@@ -1,0 +1,74 @@
+\subsection{Overview}
+The BBP system will be developed using a microservice architectural style. This architectural choice decouples the data processing required by certain functionalities of the system (e.g. analyzing data to reconstruct paths or locate potholes, calculating statistics) from the user-interacting functionalities (e.g. account management, trip management). Moreover, this approach reduces dependencies between modules, allows independent deployment, and is more easily scalable.
+The system will be composed of a client layer (the mobile application), and the microservice based backend. Communication between the two will happen through an API gateway, providing a single entry point. Communication between services will be event-driven (asynchronous) for data processing tasks, to ensure responsiveness, and REST (synchronous) for user data retrieval.
+Each microservice will manage its own data through a local database, in order to maintain loose coupling between services. The system will also integrate with external services for navigation and weather data retrieval.
+
+\subsection{Component View}
+\subsubsection{Component Description}
+The system is composed of various components, that will be divided into logical layers: 
+the User Interface layer, the Gateway layer, the Application Logic layer, and the Data Layer.\\
+\newline
+\textbf{User Interface Layer}
+\begin{itemize}
+    \item \textbf{BBP Mobile Application:} this is the contact point between the system and the users.
+    It is a native mobile application, it hosts the User Interface, and handles all user interaction. It also handles data
+    acquisition from the mobile device's sensors, and all communication between it and
+    the rest of the system happens through the API Gateway, by way of HTTPS/REST calls.\\
+\end{itemize}
+\textbf{Gateway Layer}
+\begin{itemize}
+    \item \textbf{API Gateway:} this component acts as the single communication point
+    between the mobile application and the rest of the system. Its purpose is to route
+    all incoming requests to the appropriate microservice, verifiying authentication through
+    JSON Web Tokens, and ensuring that traffic is distributed across multiple instances
+    of the various services, in order to properly scale the system based on which services
+    are experiencing a greater load.
+    \item \textbf{Service Discovery:} this component maintains a registry of all active
+    microservice instances. When a service, or the API gateway, needs to comunicate with 
+    another service, they must query this component in order to find the IP address and
+    port of the desired service.\\
+\end{itemize}
+\textbf{Application Logic Layer (Microservices)}
+\begin{itemize}
+    \item \textbf{User Service:} this service handles all operations relative to a user'scalable
+    account. It manages account creation and deletion, authentication through JWTs, and
+    password recovery.
+    \item \textbf{Trip Service:} this service handles the acquisition and storage of trip data. It
+    receives the stream of sensor data suring an automated recording, or the inserted data
+    in case of a manually recorded trip, and handles data storage. It will publish an event to the
+    Message Broker upon trip insertion, in order to trigger the asynchronous processing of the
+    received data. It also handles retrieving data for when the user views their personal
+    trip history.
+    \item \textbf{Data Processing Service:} this service handles all heavy computation tasks. It is
+    a background service, generally activated by consuming events from the Message Broker. It handles
+    the computation of statistics, the analysis of sensor data for obstacle detection, and the reconstruction
+    of paths. It updates the relevant services after the computation.
+    \item \textbf{Path Service:} this service handles the geospatial operations performed on bike paths.
+    It specifically handles the operations required when a user uses the 'path finding' functionality of 
+    BBP, wherein the service will search for paths matching the inserted starting and ending locations, and
+    calculate their score.
+    \item \textbf{Message Broker:} this component (e.g. Apache Kafka) serves to enable asynchronous 
+    communication between services. It is specifically used to decouple the Data Processing Service from the 
+    other services, ensuring that high latency computations do not affect system responsiveness.\\
+\end{itemize}
+\textbf{Data Layer}\\
+Since the system is realized following the microservices architecture style, each service will have 
+a distinct, independent database instance. Specifically there will be:
+\begin{itemize}
+    \item \textbf{User DB: } will store all data relevant to a user's account (user credentials, profile
+    information). Will also store aggregate statistics computed by the Data Processing Service, in order to
+    simplify the handling of this operation. Is accessed exclusively by the User Service.
+    \item \textbf{Trip DB: } will store retrieved sensor data and trip summaries. Is accessed exclusively
+    by the Trip Service.
+    \item \textbf{Path DB} a geospatial database (e.g. PostGIS). Will store path geometries.\\
+\end{itemize}
+\textbf{External Services}
+\begin{itemize}
+    \item \textbf{Map Provider: } an external service (e.g. OpenStreetMap) used to render the map
+    for the UI, and to aid in geospatial computations performaed by the backend.
+    \item \textbf{Weather Provider: } an external service (e.g. OpenWeatherMap), which is queried in 
+    order to retrieve weather conditions along routes, which are used to enrich the trip data.
+\end{itemize}
+
+\subsubsection{Component Diagram}
+
