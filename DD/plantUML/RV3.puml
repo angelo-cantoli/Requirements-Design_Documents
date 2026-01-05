@@ -1,0 +1,50 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Trip Service" as TS
+database "Trip DB" as DB
+participant "Message Broker" as Broker
+
+User -> App : Selects "Add Manual Trip"
+activate App
+
+App -> App : Collects inputs\n(Date, Time, Route, Obstacles)
+
+App -> Gateway : POST /api/v1/trips\n{userId, mode="MANUAL", ...}
+activate Gateway
+
+Gateway -> TS : Forward Request
+activate TS
+
+TS -> TS : Validate Data
+
+alt Validation Failed
+    TS --> Gateway : 400 Bad Request
+    Gateway --> App : Error Message
+    App --> User : Show Validation Error
+else Validation Success
+    TS -> DB : INSERT INTO Trips
+    activate DB
+    DB --> TS : Success
+    deactivate DB
+
+    TS -> Broker : Publish "TripCreated" Event
+    activate Broker
+    Broker --> TS : ACK
+    deactivate Broker
+
+    TS --> Gateway : 201 Created\n{tripId: "..."}
+    deactivate TS
+
+    Gateway --> App : Trip Saved
+    deactivate Gateway
+
+    App --> User : Update History View
+    deactivate App
+end
+
+@enduml

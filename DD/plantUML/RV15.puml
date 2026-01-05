@@ -1,0 +1,82 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Unregistered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "User Service" as US
+database "User DB" as DB
+participant "External Email\nProvider" as Email
+
+
+User -> App : Presses "Forgot Password"\nEnters Email
+activate App
+
+App -> Gateway : POST /api/v1/users/reset-request\n{ "email": "..." }
+activate Gateway
+
+Gateway -> US : Forward Request
+activate US
+
+US -> DB : SELECT id FROM Users WHERE email = ?
+activate DB
+DB --> US : Result (Found/Not Found)
+deactivate DB
+
+alt User Exists
+    US -> US : Generate Random Reset Token\n(Set Expiry = 15 mins)
+    US -> DB : SAVE token_hash FOR user_id
+    activate DB
+    DB --> US : Saved
+    deactivate DB
+    
+    US -> Email : Send Email
+    activate Email
+    Email --> User : Delivers Reset Code
+    deactivate Email
+end
+
+
+US --> Gateway : 200 OK
+deactivate US
+
+Gateway --> App : "Check email" notification
+deactivate Gateway
+deactivate App
+
+User -> App : Enters Code + New Password
+activate App
+
+App -> Gateway : POST /api/v1/users/reset-confirm\n{ "code": "...", "newPassword": "..." }
+activate Gateway
+
+Gateway -> US : Forward Request
+activate US
+
+US -> DB : SELECT user_id FROM ResetTokens\nWHERE code = ? AND expiry > NOW()
+activate DB
+DB --> US : Valid Token (User ID)
+deactivate DB
+
+alt Token Invalid / Expired
+    US --> Gateway : 400 Bad Request
+    Gateway --> App : Error: Invalid Code
+else Token Valid
+    US -> US : Hash New Password
+    US -> DB : UPDATE Users SET password_hash = ...
+    activate DB
+    US -> DB : DELETE Token
+    deactivate DB
+    
+    US --> Gateway : 200 OK
+    deactivate US
+    
+    Gateway --> App : Password Changed
+    deactivate Gateway
+    
+    App --> User : Redirect to Login
+    deactivate App
+end
+
+@enduml

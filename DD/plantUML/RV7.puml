@@ -1,0 +1,50 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Trip Service" as TS
+database "Trip DB" as DB
+
+User -> App : Selects Trip -> Taps "Publish"
+activate App
+
+App -> Gateway : PATCH /api/v1/trips/{tripId}\n{ "isPublished": true }
+activate Gateway
+
+note right of Gateway
+  Gateway verifies JWT
+  (Authentication)
+end note
+
+Gateway -> TS : Forward Request
+activate TS
+
+TS -> DB : SELECT user_id FROM Trips WHERE id = ?
+activate DB
+DB --> TS : Return Owner ID
+deactivate DB
+
+alt User is NOT Owner
+    TS --> Gateway : 403 Forbidden
+    Gateway --> App : Error: Permission Denied
+    App --> User : Show Error
+else User IS Owner
+    TS -> DB : UPDATE Trips SET is_published = TRUE WHERE id = ?
+    activate DB
+    DB --> TS : Success
+    deactivate DB
+
+    TS --> Gateway : 200 OK\n{ "id": "...", "isPublished": true }
+    deactivate TS
+
+    Gateway --> App : Update Successful
+    deactivate Gateway
+
+    App --> User : Show "Trip Published" confirmation
+    deactivate App
+end
+
+@enduml

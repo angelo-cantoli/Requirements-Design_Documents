@@ -1,0 +1,40 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "User Service" as US
+database "User DB" as DB
+
+User -> App : Navigates to "Statistics"
+activate App
+
+App -> Gateway : GET /api/v1/users/{userId}/stats
+activate Gateway
+
+note right of Gateway
+  Gateway verifies JWT signature
+  to ensure privacy
+end note
+
+Gateway -> US : Forward Request
+activate US
+
+US -> DB : SELECT total_distance, avg_speed, trips_count\nFROM UserStats WHERE user_id = ?
+activate DB
+DB --> US : Result Set
+deactivate DB
+
+US --> Gateway : 200 OK\n{"totalKm": ..., "avgSpeed": ..., "trips": ...}
+deactivate US
+
+Gateway --> App : Return JSON
+deactivate Gateway
+
+App -> App : Render Charts
+App --> User : Display Statistics
+deactivate App
+
+@enduml

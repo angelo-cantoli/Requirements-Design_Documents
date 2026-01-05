@@ -1,0 +1,34 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Path Service" as PS
+database "Path DB" as DB
+
+User -> App : Taps on a specific Path Segment
+activate App
+
+App -> Gateway : GET /api/v1/paths/{pathId}
+activate Gateway
+
+Gateway -> PS : Forward Request
+activate PS
+
+PS -> DB : SELECT status, obstacle_list, avg_speed\nFROM Path_Details WHERE path_id = ?
+activate DB
+DB --> PS : Return Details
+deactivate DB
+
+PS --> Gateway : 200 OK\n{ "status": "...", "potholes": [...], "avgSpeed": ... }
+deactivate PS
+
+Gateway --> App : Return JSON
+deactivate Gateway
+
+App --> User : Display Path Information
+deactivate App
+
+@enduml

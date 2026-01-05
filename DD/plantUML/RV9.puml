@@ -1,0 +1,41 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Path Service" as PS
+database "Path DB" as DB
+
+User -> App : Enters Start & End Locations
+activate App
+
+App -> App : Geocode addresses to Coordinates\n(Lat/Lon)
+
+App -> Gateway : GET /api/v1/paths/routes?start=...&end=...
+activate Gateway
+
+Gateway -> PS : Forward Request
+activate PS
+
+
+
+PS -> DB : EXECUTE FindPaths(start_node, end_node)
+activate DB
+DB --> PS : Return List of Paths
+deactivate DB
+
+
+PS -> PS : Calculate Scores
+
+PS --> Gateway : 200 OK
+deactivate PS
+
+Gateway --> App : Return Routes Sorted by Score
+deactivate Gateway
+
+App --> User : Render Routes on Map
+deactivate App
+
+@enduml

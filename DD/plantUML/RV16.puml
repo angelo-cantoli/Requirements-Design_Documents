@@ -1,0 +1,62 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Trip Service" as TS
+database "Trip DB" as DB
+participant "Message Broker" as Broker
+participant "Data Processing\nService" as Processor
+
+User -> App : Selects Trip -> Presses "Delete"
+activate App
+
+App -> Gateway : DELETE /api/v1/trips/{tripId}
+activate Gateway
+
+note right of Gateway
+  Gateway verifies JWT
+end note
+
+Gateway -> TS : Forward Request
+activate TS
+
+TS -> DB : SELECT user_id FROM Trips WHERE id = ?
+activate DB
+DB --> TS : Return Owner ID
+deactivate DB
+
+alt User is NOT Owner
+    TS --> Gateway : 403 Forbidden
+    Gateway --> App : Error: Permission Denied
+else User IS Owner
+    TS -> DB : DELETE FROM Trips WHERE id = ?
+    activate DB
+    DB --> TS : Success
+    deactivate DB
+
+    TS -> Broker : Publish "TripDeleted" Event\n(payload: {tripId, userId})
+    activate Broker
+    Broker --> TS : ACK
+    deactivate Broker
+
+    TS --> Gateway : 204 No Content
+    deactivate TS
+
+    Gateway --> App : Trip Deleted
+    deactivate Gateway
+
+    App --> User : Update History List
+    deactivate App
+
+    group Asynchronous Stats Update
+        Broker -\\ Processor : Consume "TripDeleted"
+        activate Processor
+        Processor -> Processor : Update User's\nAggregate Stats
+        deactivate Processor
+    end
+end
+
+@enduml

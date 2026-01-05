@@ -1,0 +1,63 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "User Service" as US
+database "User DB" as DB
+participant "Message Broker" as Broker
+participant "Trip Service" as TS
+
+User -> App : Taps "Delete Account"
+activate App
+
+
+App -> Gateway : DELETE /api/v1/users/{userId}
+activate Gateway
+
+note right of Gateway
+  Gateway verifies JWT
+  (Authentication)
+end note
+
+Gateway -> US : Forward Request
+activate US
+
+
+US -> DB : DELETE FROM Users WHERE id = ?
+activate DB
+DB --> US : Success
+deactivate DB
+
+
+US -> Broker : Publish "UserDeleted" Event\n(payload: userId)
+activate Broker
+Broker --> US : ACK
+deactivate Broker
+
+US --> Gateway : 204 No Content
+deactivate US
+
+Gateway --> App : Account Deleted
+deactivate Gateway
+
+App -> App : Clear Local Storage
+App --> User : Redirect to Welcome Screen
+deactivate App
+
+
+group Asynchronous Data Cleanup
+    Broker -\\ TS : Consume "UserDeleted"
+    activate TS
+    note right of TS
+      Trip Service anonymizes
+      or deletes past trips
+      independently
+    end note
+    TS -> TS : DELETE/UPDATE Trips\nWHERE user_id = ?
+    deactivate TS
+end
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "User Service" as US
+database "User DB" as DB
+
+User -> App : Enters credentials
+activate App
+
+App -> Gateway : POST /api/v1/users/login\n{email, password}
+activate Gateway
+
+Gateway -> US : Forward Request
+activate US
+
+US -> DB : SELECT password_hash FROM Users WHERE email = ?
+activate DB
+DB --> US : Result
+deactivate DB
+
+alt Invalid Credentials
+    US --> Gateway : 401 Unauthorized
+    Gateway --> App : Error: Invalid login
+    App --> User : Display Error
+else Valid Credentials
+    US -> US : Generate JWT\n(Sign with Private Key)
+    
+    US --> Gateway : 200 OK\n{token: "...", expiresIn: ...}
+    deactivate US
+    
+    Gateway --> App : Login Successful + Token
+    deactivate Gateway
+    
+    App -> App : Store Token Securely
+    App --> User : Show Dashboard
+    deactivate App
+end
+
+@enduml

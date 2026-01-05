@@ -1,0 +1,40 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Trip Service" as TS
+database "Trip DB" as DB
+
+User -> App : Taps "History" Tab
+activate App
+
+App -> Gateway : GET /api/v1/trips?userId={id}
+activate Gateway
+
+note right of Gateway
+  Gateway verifies JWT signature
+  before forwarding
+end note
+
+Gateway -> TS : Forward Request
+activate TS
+
+TS -> DB : SELECT id, date, distance, duration\nFROM Trips WHERE user_id = ?\nORDER BY date DESC
+activate DB
+DB --> TS : Result Set (Trip Summaries)
+deactivate DB
+
+TS --> Gateway : 200 OK\nJSON Body: [{id: "...", date: "...", dist: "..."}, ...]
+deactivate TS
+
+Gateway --> App : Return JSON
+deactivate Gateway
+
+App -> App : Parse & Render List
+App --> User : Display Trip History
+deactivate App
+
+@enduml

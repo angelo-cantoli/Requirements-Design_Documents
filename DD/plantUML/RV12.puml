@@ -1,0 +1,51 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "User Service" as US
+database "User DB" as DB
+
+User -> App : Edits Profile (e.g. changes Username)
+activate App
+
+App -> Gateway : PATCH /api/v1/users/{userId}\n{ "username": "NewName" }
+activate Gateway
+
+note right of Gateway
+  Gateway verifies JWT
+  (Authentication)
+end note
+
+Gateway -> US : Forward Request
+activate US
+
+
+US -> DB : SELECT id FROM Users WHERE username = 'NewName'
+activate DB
+DB --> US : Result (Empty/Found)
+deactivate DB
+
+alt Username Already Taken
+    US --> Gateway : 409 Conflict
+    Gateway --> App : Error: Username Taken
+    App --> User : Display Error
+else Username Available
+    US -> DB : UPDATE Users SET username = 'NewName' WHERE id = ?
+    activate DB
+    DB --> US : Success
+    deactivate DB
+
+    US --> Gateway : 200 OK
+    deactivate US
+
+    Gateway --> App : Profile Updated
+    deactivate Gateway
+
+    App --> User : Show Success Message
+    deactivate App
+end
+
+@enduml

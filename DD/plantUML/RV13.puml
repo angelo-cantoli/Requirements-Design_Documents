@@ -1,0 +1,43 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "User Service" as US
+database "User DB\n(or Cache)" as DB
+
+User -> App : Taps "Logout"
+activate App
+
+
+App -> Gateway : POST /api/v1/users/logout
+activate Gateway
+
+note right of Gateway
+  Gateway verifies JWT
+  (Authentication)
+end note
+
+Gateway -> US : Forward Request
+activate US
+
+
+US -> DB : Add Token ID to Revocation List
+activate DB
+DB --> US : Success
+deactivate DB
+
+US --> Gateway : 200 OK
+deactivate US
+
+Gateway --> App : Logout Confirmed
+deactivate Gateway
+
+
+App -> App : Delete JWT from Secure Storage
+App --> User : Redirect to Login Screen
+deactivate App
+
+@enduml

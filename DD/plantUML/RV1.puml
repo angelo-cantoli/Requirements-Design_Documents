@@ -1,0 +1,46 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Unregistered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "User Service" as US
+database "User DB" as DB
+
+User -> App : Enters email, username, password
+activate App
+
+App -> Gateway : POST /api/v1/users/register\n{email, username, password}
+activate Gateway
+
+Gateway -> US : Forward Request
+activate US
+
+US -> DB : SELECT * FROM Users WHERE email = ?
+activate DB
+DB --> US : Result (Empty/Found)
+deactivate DB
+
+alt User already exists
+    US --> Gateway : 409 Conflict
+    Gateway --> App : Error: Email already in use
+    App --> User : Display Error Message
+else User does not exist
+    US -> US : Hash Password
+    US -> DB : INSERT INTO Users ...
+    activate DB
+    DB --> US : Success
+    deactivate DB
+    
+    US --> Gateway : 201 Created
+    deactivate US
+    
+    Gateway --> App : Registration Successful
+    deactivate Gateway
+    
+    App --> User : Redirect to Login
+    deactivate App
+end
+
+@enduml

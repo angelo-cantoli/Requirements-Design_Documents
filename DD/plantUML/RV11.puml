@@ -1,0 +1,44 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Path Service" as PS
+database "Path DB" as DB
+participant "External Nav App\n(e.g. Google Maps)" as ExtApp
+
+User -> App : Taps "Start Navigation" on selected path
+activate App
+
+
+App -> Gateway : GET /api/v1/paths/{pathId}/export?format=GPX
+activate Gateway
+
+Gateway -> PS : Forward Request
+activate PS
+
+PS -> DB : SELECT coordinates\nFROM Paths WHERE id = ?
+activate DB
+DB --> PS : Return Route Geometry
+deactivate DB
+
+PS -> PS : Convert to Waypoints/GPX
+
+PS --> Gateway : 200 OK\n(List of Waypoints)
+deactivate PS
+
+Gateway --> App : Return Route Data
+deactivate Gateway
+
+
+
+App -> ExtApp : Launch App with Route
+deactivate App
+activate ExtApp
+
+ExtApp --> User : Display Turn-by-Turn Navigation
+deactivate ExtApp
+
+@enduml

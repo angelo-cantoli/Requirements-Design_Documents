@@ -1,0 +1,67 @@
+@startuml
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Registered User" as User
+participant "Mobile App" as App
+participant "API Gateway" as Gateway
+participant "Trip Service" as TS
+participant "Message Broker" as Broker
+participant "Data Processing\nService" as Processor
+
+User -> App : Presses "Start Recording"
+activate App
+
+App -> Gateway : POST /api/v1/trips\n{userId, ...}
+activate Gateway
+Gateway -> TS : Forward Request
+activate TS
+TS -> TS : Create Trip Record\n(Status: STARTED)
+TS --> Gateway : 201 Created\n{tripId: "101"}
+deactivate TS
+Gateway --> App : Recording Active
+deactivate Gateway
+
+loop During Trip (e.g. every 30s)
+    App -> App : Buffer GPS & Sensor Data
+    App -> Gateway : POST /trips/101/telemetry
+    activate Gateway
+    Gateway -> TS : Forward Batch
+    activate TS
+    
+    TS -> Broker : Publish "TelemetryBatch" Event
+    activate Broker
+    Broker --> TS : ACK
+    deactivate Broker
+    
+    TS --> Gateway : 202 Accepted
+    deactivate TS
+    Gateway --> App : OK
+    deactivate Gateway
+
+    group Asynchronous Processing
+        Broker -\\ Processor : Consume Batch
+        activate Processor
+        Processor -> Processor : Analyze for Potholes\n& Smooth Coordinates
+        deactivate Processor
+    end
+end
+
+User -> App : Presses "Stop Recording"
+App -> Gateway : PATCH /trips/101\n{status: "ENDED"}
+activate Gateway
+Gateway -> TS : Forward Request
+activate TS
+TS -> Broker : Publish "TripEnded" Event
+activate Broker
+Broker -> TS : ACK
+deactivate Broker
+TS --> Gateway : 200 OK
+deactivate TS
+Gateway --> App : Trip Finalized
+deactivate Gateway
+
+App --> User : Show Trip Summary
+deactivate App
+
+@enduml
