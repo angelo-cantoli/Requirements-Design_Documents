@@ -96,6 +96,86 @@ The message broker (e.g. Apache Kafka) facilitates the communication between ser
 The deployment will include a Managed Database Service (e.g. AWS RDS), which will provide distinct database instances for each microservice. The path service will require a database instance with geospatial extensions (e.g. PostGIS).
 This enforces the loose coupling required by the microservices architecture, ensuring that services cannot access private data of other services. Furthermore, the single database instances can be specifically optimized for each services’ needs.
 
+\subsection{Component Interfaces}
+The component interfaces for the BBP system are the API endpoints for the User Service, Trip Service 
+and Path Service. These all follow the REST constraints and accept and return JSON payloads.\\
+\newline
+\textbf{User Service Interface}\\
+Base URL: /api/v1/users
+\begin{longtable}{|p{1.5cm}|p{1.3cm}|p{4cm}|p{4cm}|p{3.5cm}|}
+   \hline
+   \textbf{URL} & \textbf{Method} & \textbf{Description} & \textbf{Contents/Parameters} & \textbf{Errors} \\ \hline
+   \endhead
+   /register & POST & Registers a new user account in the system & \textbf{Body:} \{"email": "...", "password": "...", "username": "...", ...\} & \textbf{409 conflict:} username/email already taken \\
+   \hline
+   /login & POST & Authenticates a registered user and issues a JWT token & \textbf{Body:} \{"email": "...", "password": "..."\}
+   
+   \textbf{Response:} \{"token": "...", "expiration": "..."\} & \textbf{401 unauthorized:} invalid credentials \\
+   \hline
+   /\{userID\} & GET & Retrieves the profile data relative to the specific user ID & JWT authorization token & \textbf{401 unauthorized:} invalid JWT \\
+   \hline
+   /\{userID\} & PATCH & Updates user profile data & JWT authorization token
+   
+   \textbf{Body:} e.g. \{"username": "newUsername"\} & \textbf{401 unauthorized:} invalid JWT
+   
+   \textbf{409 conflict:} username already taken\\
+   \hline
+   /\{userID\}/ stats & GET & Retrieves user's aggregate statistics & JWT authorization token & \textbf{401 unauthorized:} invalid JWT\\
+   \hline
+   /logout & POST & Logs a user out of their account, revoking their JWT authentication token & JWT authentication token & \\
+   \hline
+   /\{userID\} & DELETE & Deletes a user's account & JWT authentication token & \textbf{401 unauthorized:} invalid JWT \\
+   \hline
+   /reset-request & POST & Begins the password recovery process for a user & \textbf{Body:} \{"email": "..."\} & \textbf{400 bad request:} no account registered with email \\
+   \hline
+   /reset-confirm & POST & Checks the password recovery code and resets the password for the user's account & \textbf{Body:} \{"code": "...", "newPassword": "..."\} & \textbf{400 bad request:} invalid code \\
+   \hline
+   \caption[]{User Service Interface}
+\end{longtable}
+\noindent
+\textbf{Trip Service Interface}\\
+All of the methods of the Trip Service interface require sending a JWT authorization token,
+which will be verified by the API gateway to ensure that a user can only handle/create trips in their
+trip history. In case of an invalid JWT token, the gateway will return a '401 unauthorized' error. 
+For the sake of brevity, these are omitted from the following table.\\
+\newline
+Base URL: /api/v1/trips
+\begin{longtable}{|p{1.5cm}|p{1.3cm}|p{4cm}|p{4cm}|p{3.5cm}|}
+   \hline
+   \textbf{URL} & \textbf{Method} & \textbf{Description} & \textbf{Contents/Parameters} & \textbf{Errors} \\ \hline
+   \endhead
+   / & POST & Creates a new trip (manual insertion or initiation of automatic recording) & \textbf{Body:} \{"userId": "...", "mode": "MAN/AUTO", ...\} 
+   
+   \textbf{Response:} \{"tripID": "..."\} & \textbf{400 bad request:} invalid data from manual insertion\\
+   \hline
+   /\{tripID\} & PATCH & Updates the state of a trip (e.g. paused, ended) & \textbf{Body:} \{"state": "...", ...\} & \textbf{409 conflict:} if the trip state change is invalid (e.g. end already ended trip)\\
+   \hline
+   /\{tripId\}/ telemetry & POST & Uploads a batch of GPS and sensor data during the recording of a trip & \textbf{Body:} \{...\} & \\
+   \hline
+   / & GET & Retrieves user's trip history & \textbf{Body:} \{"userID": "..."\} & \\
+   \hline
+   /\{tripID\} & GET & Retrieves data relative to a specific trip & & \textbf{403 forbidden:} user doesn't own the trip\\
+   \hline
+   /\{tripID\} & DELETE & Deletes a trip from the user's trip history & & \textbf{403 forbidden:} user doesn't own the trip \\
+   \hline
+   \caption[]{Trip Service Interface}
+\end{longtable}
+\noindent
+\textbf{Path Service Interface}\\
+Base URL: /api/v1/paths
+\begin{longtable}{|p{1.5cm}|p{1.3cm}|p{4cm}|p{4cm}|p{3.5cm}|}
+   \hline
+   \textbf{URL} & \textbf{Method} & \textbf{Description} & \textbf{Contents/Parameters} & \textbf{Errors} \\ \hline
+   \endhead
+   /routes & GET & Retrieves all published paths between two inserted locations & \textbf{Body:} \{"start": "...", "end": "..."\} & \\
+   \hline
+   /\{pathID\} & GET & Retrieves specific details about a selected path & & \\
+   \hline
+   /\{pathID\}/ export & GET & Retrieves data in order to export selected path to navigation app & \textbf{Body:} \{"format": "..."\} & \\
+   \hline
+   \caption[]{Path Service Interface}
+\end{longtable}
+
 \subsection{Runtime View}
 \subsubsection{Unregistered User Signs Up}
 \begin{figure}[H]
@@ -209,3 +289,4 @@ When a user wants to recover their password, the mobile application sends a POST
     \caption{User Deletes a Recorded Trip Sequence Diagram}
 \end{figure}
 When a user deletes a trip from their history, the mobile application sends a DELETE request to the API Gateway, which verifies the JWT signature, ensuring the user is properly authenticated, and then forwards it to the Trip Service. The service validates the request, then in case of success proceeds to delete the trip from the Trip DB. The service then publishes a ‘TripDeleted’ event to the Message Broker, so that the Data Processing Service can asynchronously update the shared statistics.
+
