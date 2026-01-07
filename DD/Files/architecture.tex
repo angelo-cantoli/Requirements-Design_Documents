@@ -98,9 +98,9 @@ This enforces the loose coupling required by the microservices architecture, ens
 
 \subsection{Component Interfaces}
 The component interfaces for the BBP system are the API endpoints for the User Service, Trip Service 
-and Path Service. These all follow the REST constraints and accept and return JSON payloads.\\
-\newline
-\textbf{User Service Interface}\\
+and Path Service. These all follow the REST constraints and accept and return JSON payloads.
+
+\subsubsection{User Service Interface}
 Base URL: /api/v1/users
 \begin{longtable}{|p{1.5cm}|p{1.3cm}|p{4cm}|p{4cm}|p{3.5cm}|}
    \hline
@@ -132,8 +132,8 @@ Base URL: /api/v1/users
    \hline
    \caption[]{User Service Interface}
 \end{longtable}
-\noindent
-\textbf{Trip Service Interface}\\
+
+\subsubsection{Trip Service Interface}
 All of the methods of the Trip Service interface require sending a JWT authorization token,
 which will be verified by the API gateway to ensure that a user can only handle/create trips in their
 trip history. In case of an invalid JWT token, the gateway will return a '401 unauthorized' error. 
@@ -160,8 +160,8 @@ Base URL: /api/v1/trips
    \hline
    \caption[]{Trip Service Interface}
 \end{longtable}
-\noindent
-\textbf{Path Service Interface}\\
+
+\subsubsection{Path Service Interface}
 Base URL: /api/v1/paths
 \begin{longtable}{|p{1.5cm}|p{1.3cm}|p{4cm}|p{4cm}|p{3.5cm}|}
    \hline
@@ -290,3 +290,32 @@ When a user wants to recover their password, the mobile application sends a POST
 \end{figure}
 When a user deletes a trip from their history, the mobile application sends a DELETE request to the API Gateway, which verifies the JWT signature, ensuring the user is properly authenticated, and then forwards it to the Trip Service. The service validates the request, then in case of success proceeds to delete the trip from the Trip DB. The service then publishes a ‘TripDeleted’ event to the Message Broker, so that the Data Processing Service can asynchronously update the shared statistics.
 
+\subsection{Selected Architectural Styles and Patterns}
+\textbf{Microservices Architecture}\\
+The system is divided into a series of lightweight, independent services. Each service 
+runs its own processes and manages its own database, ensuring it is decoupled from the other 
+services. This style was selected to enable independent scalability (e.g. allowing the system 
+to handle a high volume influx of data during the recording of a trip without impacting the other 
+functionalities of the system), and to facilitate deployment by enabling independent deployment of 
+the services. \\
+\newline
+\textbf{REST (Representational State Transfer)}\\
+The synchronous comunication between the Mobile Application and the system, through the API 
+Gateway, folloes the REST architectural style. The API is designed around resources, not actions; it 
+uses standard HTTP verbs for operations, and remains stateless through the use of JWTs for 
+authentication. This style was chosen to ensure that the interface would be easily cacheable and 
+easy to use for the mobile client application.\\
+\newline
+\textbf{Publish-Subscribe Pattern}\\
+To handle the high frequency influx of sensor data during an automated recording, without
+blocking the user interface, the system employs a Publish-Subscribe pattern. The Trip Service 
+acts as a publisher, sending events to the message broker, while the Data Processing service 
+acts as a subscriber, consuming the events asynchronously. This decouples the acquisition of 
+data from its computation and processing, allowing the UI to be highly responsive independently from 
+the workload.\\
+\newline
+\textbf{Circuit Breaker Pattern}\\
+Since cascading failures are a common risk in microservice architectures, the system employs 
+circuit breakers between all of the various services. This allows a service to 'fail fast', 
+ensuring that in case of failure the circuit breaker opens, allowing the rest of the service to continue 
+functioning correctly by invoking fallback methods.
