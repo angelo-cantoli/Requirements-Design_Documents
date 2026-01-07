@@ -104,9 +104,9 @@ The message broker (e.g. Apache Kafka) facilitates the communication between ser
 \textbf{Managed Database per Service}\\
 The deployment will include a Managed Database Service (e.g. AWS RDS), which will provide distinct database instances for each microservice. The path service will require a database instance with geospatial extensions (e.g. PostGIS).
 This enforces the loose coupling required by the microservices architecture, ensuring that services cannot access private data of other services. Furthermore, the single database instances can be specifically optimized for each services’ needs.
-
+\newpage
 \subsection{Component Interfaces}
-The component interfaces for the BBP system are the API endpoints for the User Service, Trip Service 
+The component interfaces shown here for the BBP system are the API endpoints for the User Service, Trip Service 
 and Path Service. These all follow the REST constraints and accept and return JSON payloads.
 
 \subsubsection{User Service Interface}
@@ -141,7 +141,7 @@ Base URL: /api/v1/users
    \hline
    \caption[]{User Service Interface}
 \end{longtable}
-
+\newpage
 \subsubsection{Trip Service Interface}
 All of the methods of the Trip Service interface require sending a JWT authorization token,
 which will be verified by the API gateway to ensure that a user can only handle/create trips in their
