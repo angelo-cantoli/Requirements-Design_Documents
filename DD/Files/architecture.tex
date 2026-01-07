@@ -86,6 +86,11 @@ The system is divided into the following physical tiers:
 \end{itemize}
 
 \subsubsection{Deployment Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./Images/deploymentDiagram.png}
+    \caption{BBP Deployment Diagram}
+\end{figure}
 \subsubsection{Deployment Description}
 \textbf{Containerized Cloud Environment}\\
 All the microservices that compose the backend of the application will be deployed in a containerized environment (e.g. Kubernetes), hosted on a cloud provider (e.g. AWS). Each microservice will be packaged as an independent container; this is crucial to ensure scalability (in case of fluctuating loads, multiple instances of a service can be instantiated easily to handle a heavier load, independently from other services with a smaller amount of work), isolation (if a service crashes, the other services will be unaffected). Furthermore, containers ensure that software will run exactly the same way in development, testing and deployment, eliminating consistency issues.\\
