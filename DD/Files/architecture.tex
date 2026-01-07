@@ -4,6 +4,12 @@ The system will be composed of a client layer (the mobile application), and the 
 Each microservice will manage its own data through a local database, in order to maintain loose coupling between services. The system will also integrate with external services for navigation and weather data retrieval.
 
 \subsection{Component View}
+\subsubsection{Component Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./Images/componentDiagram.png}
+    \caption{BBP Component Diagram}
+\end{figure}
 \subsubsection{Component Description}
 The system is composed of various components, that will be divided into logical layers: 
 the User Interface layer, the Gateway layer, the Application Logic layer, and the Data Layer.\\
@@ -69,8 +75,6 @@ a distinct, independent database instance. Specifically there will be:
     \item \textbf{Weather Provider: } an external service (e.g. OpenWeatherMap), which is queried in 
     order to retrieve weather conditions along routes, which are used to enrich the trip data.
 \end{itemize}
-
-\subsubsection{Component Diagram}
 
 \subsection{Deployment View}
 The deployment of the BBP system will follow a three-tiered client-server architecture, in line with the microservice architecture style described previously. The system is designed to be hosted in a cloud computing environment (e.g. AWS), which aids in ensuring high availability and scalability, which are critical aspects of the system.
